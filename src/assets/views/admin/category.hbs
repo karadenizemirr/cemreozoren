@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="wrapper dashboard-wrapper">
+        <div class="d-flex flex-wrap flex-xl-nowrap">
+            <div class="page-content">
+                <main id="content" class="bg-gray-01">
+                    <div class="px-3 px-lg-6 px-xxl-13 py-5 py-lg-10">
+                        <div class="mb-6">
+                            <h2 class="mb-0 text-heading fs-22 lh-15">Kategori İşlemleri
+                            </h2>
+                            <p class="mb-1">Kategori İşlemlerini Buradan Yönetebilirsiniz</p>
+                        </div>
+                        <div class="button-group mb-4">
+                            <button class="btn btn-primary btn-sm" id="open_add_category_modal">
+                                Kategori Ekle
+                            </button>
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Kategori Adı</th>
+                                    <th scope="col">Kategori Dili</th>
+                                    <th scope="col">İşlem</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each categories}}
+                                <tr>
+                                    <th scope="row">{{this.id}}</th>
+                                    <td>{{this.name}}</td>
+                                    <td>{{this.language.language}}</td>
+                                    <td>
+                                        <a class="btn btn-danger btn-sm text-white" href="/admin/category/delete/{{this.id}}">
+                                            <i class="fas fa-trash mr-2"></i>Sil
+                                        </a>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- Modal -->
+<div class="modal fade" id="add_category_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Kategori Ekle</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/admin/category" method="post">
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Kategori Adı" name="name">
+                        </div>
+                        <div class="col">
+                            <select name="language" id="" class="form-control">
+                                <option value="null">Dil Seçiniz</option>
+                                <option value="tr">TR</option>
+                                <option value="en">EN</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                        <button type="submit" class="btn btn-primary">Ekle</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#open_add_category_modal').click(function () {
+            $('#add_category_modal').modal('show')
+        })
+    })
+</script>

@@ -1,0 +1,50 @@
+<section class="pt-7 pb-11">
+    <div class="container">
+        <div class="row pt-4">
+            {{#each result}}
+            <div class="col-lg-4 col-sm-6 mb-6" data-animate="zoomIn">
+                <div class="card shadow-hover-1">
+                    <div class="hover-change-image bg-hover-overlay rounded-lg card-img-top">
+                        <img src="/public/uploads/{{#with media}}{{this.[0].image_path}}{{/with}}" alt="Home in Metric Way">
+                        <div class="card-img-overlay p-2 d-flex flex-column">
+                            <div>
+                                <span class="badge mr-2 badge-primary">For Sale</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pt-3">
+                        <h2 class="card-title fs-16 lh-2 mb-0"><a href="single-property-1.html"
+                                class="text-dark hover-primary">{{this.title}}</a></h2>
+                        <p class="card-text font-weight-500 text-gray-light mb-2">{{this.location.address}}</p>
+                        <ul class="list-inline d-flex justify-content-between mb-0 flex-wrap mr-n5">
+                            <li class="list-inline-item text-gray font-weight-500 fs-13 d-flex align-items-center mr-5"
+                                data-toggle="tooltip" title="3 Bedroom"><svg
+                                    class="icon icon-bedroom fs-18 text-primary mr-1">
+                                    <use xlink:href="#icon-bedroom"></use>
+                                </svg>{{this.detail.bedrooms}} Br</li>
+                            <li class="list-inline-item text-gray font-weight-500 fs-13 d-flex align-items-center mr-5"
+                                data-toggle="tooltip" title="3 Bathrooms"><svg
+                                    class="icon icon-shower fs-18 text-primary mr-1">
+                                    <use xlink:href="#icon-shower"></use>
+                                </svg>{{this.detail.bathrooms}} Ba</li>
+                            <li class="list-inline-item text-gray font-weight-500 fs-13 d-flex align-items-center mr-5"
+                                data-toggle="tooltip" title="Size"><svg
+                                    class="icon icon-square fs-18 text-primary mr-1">
+                                    <use xlink:href="#icon-square"></use>
+                                </svg>{{this.detail.size_in_ft}} m<sub>2</sub></li>
+                            <li class="list-inline-item text-gray font-weight-500 fs-13 d-flex align-items-center mr-5"
+                                data-toggle="tooltip" title="1 Garage"><svg
+                                    class="icon icon-Garage fs-18 text-primary mr-1">
+                                    <use xlink:href="#icon-Garage"></use>
+                                </svg>{{this.detail.garages}} Gr</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-transparent d-flex justify-content-between align-items-center py-3">
+                        <p class="fs-17 font-weight-bold text-heading mb-0">{{this.description.before_price_label}}&nbsp;{{this.description.price_in}}&nbsp;{{this.after_price_label}}</p>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</section>

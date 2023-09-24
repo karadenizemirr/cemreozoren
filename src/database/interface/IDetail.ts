@@ -1,0 +1,22 @@
+export interface IDetail {
+    size_in_ft?: string,
+    bedrooms?: string,
+    garages?: string,
+    available_from?: Date,
+    roofing?:string,
+    floors_no?: string,
+    lot_size_in_ft?: string,
+    bathrooms?: string,
+    garage_size?:string,
+    basement?: string,
+    exterior_material?: string,
+    rooms?:string,
+    custom_id?: string,
+    year_built?: string,
+    extra_details?: string,
+    structure_type?: string,
+    agent_nots?:string,
+    energy_class?: string,
+    index_in_kwh?: string,
+    energy_index?: string
+}

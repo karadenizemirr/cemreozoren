@@ -1,0 +1,779 @@
+<div class="wrapper dashboard-wrapper">
+    <div class="d-flex flex-wrap flex-xl-nowrap">
+        <div class="page-content">
+            <main id="content" class="bg-gray-01">
+                <div class="px-3 px-lg-6 px-xxl-13 py-5 py-lg-10 my-profile">
+                    <div class="mb-6">
+                        <h2 class="mb-0 text-heading fs-22 lh-15">Ürün Ekle
+                        </h2>
+                        <p class="mb-1">Ürünlerinizi Ekleyebilirsiniz</p>
+                    </div>
+                    <div class="collapse-tabs new-property-step">
+                        <ul class="nav nav-pills border py-2 px-3 mb-6 d-none d-md-flex mb-6" role="tablist">
+                            <li class="nav-item col">
+                                <a class="nav-link active bg-transparent shadow-none py-2 font-weight-500 text-center lh-214 d-block"
+                                    id="description-tab" data-toggle="pill" data-number="1." href="#description"
+                                    role="tab" aria-controls="description" aria-selected="true"><span
+                                        class="number">1.</span> Açıklama</a>
+                            </li>
+                            <li class="nav-item col">
+                                <a class="nav-link bg-transparent shadow-none py-2 font-weight-500 text-center lh-214 d-block"
+                                    id="media-tab" data-toggle="pill" data-number="2." href="#media" role="tab"
+                                    aria-controls="media" aria-selected="false"><span class="number">2.</span> Medya</a>
+                            </li>
+                            <li class="nav-item col">
+                                <a class="nav-link bg-transparent shadow-none py-2 font-weight-500 text-center lh-214 d-block"
+                                    id="location-tab" data-toggle="pill" data-number="3." href="#location" role="tab"
+                                    aria-controls="location" aria-selected="false"><span class="number">3.</span>
+                                    Lokasyon</a>
+                            </li>
+                            <li class="nav-item col">
+                                <a class="nav-link bg-transparent shadow-none py-2 font-weight-500 text-center lh-214 d-block"
+                                    id="detail-tab" data-toggle="pill" data-number="4." href="#detail" role="tab"
+                                    aria-controls="detail" aria-selected="false"><span class="number">4.</span>
+                                    Detaylar</a>
+                            </li>
+                            <li class="nav-item col">
+                                <a class="nav-link bg-transparent shadow-none py-2 font-weight-500 text-center lh-214 d-block"
+                                    id="amenities-tab" data-toggle="pill" data-number="5." href="#amenities" role="tab"
+                                    aria-controls="amenities" aria-selected="false"><span class="number">5.</span>
+                                    Dil</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content shadow-none p-0">
+                            <form accept="/admin/product/add" method="post" enctype="multipart/form-data"
+                                id="product_form">
+                                <div id="collapse-tabs-accordion">
+                                    <div class="tab-pane tab-pane-parent fade show active px-0" id="description"
+                                        role="tabpanel" aria-labelledby="description-tab">
+                                        <div class="card bg-transparent border-0">
+                                            <div class="card-header d-block d-md-none bg-transparent px-0 py-1 border-bottom-0"
+                                                id="heading-description">
+                                                <h5 class="mb-0">
+                                                    <button
+                                                        class="btn btn-lg collapse-parent btn-block border shadow-none"
+                                                        data-toggle="collapse" data-number="1."
+                                                        data-target="#description-collapse" aria-expanded="true"
+                                                        aria-controls="description-collapse">
+                                                        <span class="number">1.</span> Description
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            <div id="description-collapse" class="collapse show collapsible"
+                                                aria-labelledby="heading-description"
+                                                data-parent="#collapse-tabs-accordion">
+                                                <div class="card-body py-4 py-md-0 px-0">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="card mb-6">
+                                                                {{!-- Description --}}
+                                                                <div class="card-body p-6">
+                                                                    <h3
+                                                                        class="card-title mb-0 text-heading fs-22 lh-15">
+                                                                        Temel Özellikler</h3>
+                                                                    <p class="card-text mb-5">Başlık ve temel açıklamayı
+                                                                        buraya yapın.</p>
+                                                                    <div class="form-group">
+                                                                        <label for="title" class="text-heading">Başlık
+                                                                            <span
+                                                                                class="text-muted">(zorunlu)</span></label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-lg border-0"
+                                                                            id="title" name="description_title"
+                                                                            autocomplete="off">
+                                                                    </div>
+                                                                    <div class="form-group mb-0">
+                                                                        <label for="description-01"
+                                                                            class="text-heading">Açıklama</label>
+                                                                        <textarea class="form-control border-0" rows="5"
+                                                                            name="description"
+                                                                            id="description-01"></textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card mb-12">
+                                                                {{!-- Category --}}
+                                                                <div class="card-body p-6">
+                                                                    <h3
+                                                                        class="card-title mb-0 text-heading fs-22 lh-15">
+                                                                        Kategori Seçin</h3>
+                                                                    <p class="card-text mb-5">Sergileneceği Kategoriyi
+                                                                        Seçin</p>
+                                                                    <div class="form-row mx-n2">
+                                                                        <div
+                                                                            class="col-md-12col-lg-12 col-xxl-12 px-2 mb-4 mb-md-0">
+                                                                            <div class="form-group mb-0">
+                                                                                <label for="category"
+                                                                                    class="text-heading">Kategori</label>
+                                                                                <select
+                                                                                    class="form-control border-0 shadow-none form-control-lg selectpicker"
+                                                                                    title="Kategori Seçin"
+                                                                                    data-style="btn-lg py-2 h-52"
+                                                                                    id="category" name="category_id">
+                                                                                    {{#each categories}}
+                                                                                    <option value="{{this.id}}">
+                                                                                        {{this.name}}</option>
+                                                                                    {{/each}}
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="card mb-6">
+                                                                <div class="card-body p-6">
+                                                                    <h3
+                                                                        class="card-title mb-0 text-heading fs-22 lh-15">
+                                                                        Fiyat Bilgisi</h3>
+                                                                    <p class="card-text mb-5">Fiyat bilgisi belirtmek
+                                                                        istemiyorsanız boş bırakın</p>
+                                                                    <div class="form-row mx-n2">
+                                                                        <div class="col-md-6 col-lg-12 col-xxl-6 px-2">
+                                                                            <div class="form-group">
+                                                                                <label for="price"
+                                                                                    class="text-heading">Fiyat
+                                                                                    <span class="text-muted">(Sadece
+                                                                                        sayı giriniz.)</span></label>
+                                                                                <input type="text"
+                                                                                    class="form-control form-control-lg border-0"
+                                                                                    id="price" name="price_in"
+                                                                                    autocomplete="off">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-lg-12 col-xxl-6 px-2">
+                                                                            <div class="form-group">
+                                                                                <label for="tax"
+                                                                                    class="text-heading">Yıllık Vergi
+                                                                                    Oranı</label>
+                                                                                <input type="text"
+                                                                                    name="yearly_tax_rate"
+                                                                                    class="form-control form-control-lg border-0"
+                                                                                    id="yearly_tax_rate"
+                                                                                    autocomplete="off">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-row mx-n2">
+                                                                        <div class="col-md-6 col-lg-12 col-xxl-6 px-2">
+                                                                            <div class="form-group">
+                                                                                <label for="fee"
+                                                                                    class="text-heading">Aidat Miktarı
+                                                                                    <span
+                                                                                        class="text-muted">(aylık)</span></label>
+                                                                                <input type="text"
+                                                                                    class="form-control form-control-lg border-0"
+                                                                                    id="association_fee"
+                                                                                    name="association_fee"
+                                                                                    autocomplete="off">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-lg-12 col-xxl-6 px-2">
+                                                                            <div class="form-group">
+                                                                                <label for="after-price"
+                                                                                    class="text-heading">Fiyat
+                                                                                    Etiketinden Sonra <span
+                                                                                        class="text-muted">( ex:
+                                                                                        /month)</span>
+                                                                                </label>
+                                                                                <input type="text"
+                                                                                    class="form-control form-control-lg border-0"
+                                                                                    id="after_price_label"
+                                                                                    name="after_price_label"
+                                                                                    autocomplete="off">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-row mx-n2">
+                                                                        <div class="col-md-6 col-lg-12 col-xxl-6 px-2">
+                                                                            <div class="form-group mb-0">
+                                                                                <label for="before-price"
+                                                                                    class="text-heading">Fiyat
+                                                                                    Etiketinden Sonra <span
+                                                                                        class="text-muted">(ex:
+                                                                                        "from")</span></label>
+                                                                                <input type="text"
+                                                                                    class="form-control form-control-lg border-0"
+                                                                                    id="before_price_label"
+                                                                                    name="before_price_label"
+                                                                                    autocomplete="off">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card mb-6">
+                                                                <div class="card-body p-6">
+                                                                    <h3
+                                                                        class="card-title mb-0 text-heading fs-22 lh-15">
+                                                                        Emlak Durumu</h3>
+                                                                    <p class="card-text mb-5">Emlak durumu.</p>
+                                                                    <div class="form-group mb-0">
+                                                                        <label for="status" class="text-heading">Emlak
+                                                                            Durumu</label>
+                                                                        <select
+                                                                            class="form-control border-0 shadow-none form-control-lg selectpicker"
+                                                                            title="Emlak Durumu"
+                                                                            data-style="btn-lg py-2 h-52"
+                                                                            id="property_status" name="property_status">
+                                                                            <option value="rent">Kiralık</option>
+                                                                            <option value="sale">Satılık</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-right">
+                                                        <button class="btn btn-lg btn-primary next-button">Sonraki Adım
+                                                            <span class="d-inline-block ml-2 fs-16"><i
+                                                                    class="fal fa-long-arrow-right"></i></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane tab-pane-parent fade px-0" id="media" role="tabpanel"
+                                        aria-labelledby="media-tab">
+                                        <div class="card bg-transparent border-0">
+                                            <div class="card-header d-block d-md-none bg-transparent px-0 py-1 border-bottom-0"
+                                                id="heading-media">
+                                                <h5 class="mb-0">
+                                                    <button
+                                                        class="btn btn-lg collapse-parent btn-block border shadow-none"
+                                                        data-toggle="collapse" data-number="2."
+                                                        data-target="#media-collapse" aria-expanded="true"
+                                                        aria-controls="media-collapse">
+                                                        <span class="number">2.</span> Media
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            <div id="media-collapse" class="collapse collapsible"
+                                                aria-labelledby="heading-media" data-parent="#collapse-tabs-accordion">
+                                                <div class="card-body py-4 py-md-0 px-0">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="card mb-6">
+                                                                <div class="card-body p-6">
+                                                                    <h3
+                                                                        class="card-title mb-0 text-heading fs-22 lh-15">
+                                                                        Resim Yükle</h3>
+                                                                    <p class="card-text mb-5">Tek Seferde En Fazla 10
+                                                                        Resim Yükleyebilirsiniz.</p>
+                                                                    <div class="form-row mx-n2">
+                                                                        <div
+                                                                            class="col-md-12 col-lg-12 col-xxl-12 px-2">
+                                                                        </div>
+                                                                        <div
+                                                                            class="col-md-12 col-lg-12 col-xxl-12 px-2">
+                                                                            <div class="form-group mb-md-0">
+                                                                                <label for="embed-video-id"
+                                                                                    class="text-heading">Resim
+                                                                                    Seçiniz</label>
+                                                                                <input type="file" name="images"
+                                                                                    class="form-control form-control-lg border-0"
+                                                                                    id="images" autocomplete="off"
+                                                                                    multiple>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="card mb-12">
+                                                                <div class="card-body p-6">
+                                                                    <h3
+                                                                        class="card-title mb-0 text-heading fs-22 lh-15">
+                                                                        Video Linki</h3>
+                                                                    <p class="card-text mb-5">Video linkini buraya
+                                                                        yapıştırın.</p>
+                                                                    <div class="form-row mx-n2">
+                                                                        <div
+                                                                            class="col-md-12 col-lg-12 col-xxl-12 px-2">
+                                                                        </div>
+                                                                        <div
+                                                                            class="col-md-12 col-lg-12 col-xxl-12 px-2">
+                                                                            <div class="form-group mb-md-0">
+                                                                                <label for="embed-video-id"
+                                                                                    class="text-heading">Video
+                                                                                    Link</label>
+                                                                                <input type="text" name="video_path"
+                                                                                    class="form-control form-control-lg border-0"
+                                                                                    id="video_path" autocomplete="off">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <div class="card mb-12">
+                                                                <div class="card-body p-12">
+                                                                    <h3
+                                                                        class="card-title mb-0 text-heading fs-22 lh-15">
+                                                                        Sanal Tur</h3>
+                                                                    <p class="card-text mb-5">Sanal tur linkini buraya
+                                                                        yapıştırın.</p>
+                                                                    <div class="form-group mb-0">
+                                                                        <label for="virtual-tour"
+                                                                            class="text-heading">Sanal Tur</label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-lg border-0"
+                                                                            id="virtual_tour" name="virtual_tour"
+                                                                            autocomplete="off">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-wrap">
+                                                        <a href="#"
+                                                            class="btn btn-lg bg-hover-white border rounded-lg mb-3 mr-auto prev-button">
+                                                            <span class="d-inline-block text-primary mr-2 fs-16"><i
+                                                                    class="fal fa-long-arrow-left"></i></span>Prev step
+                                                        </a>
+                                                        <button class="btn btn-lg btn-primary next-button mb-3">Next
+                                                            step
+                                                            <span class="d-inline-block ml-2 fs-16"><i
+                                                                    class="fal fa-long-arrow-right"></i></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane tab-pane-parent fade px-0" id="location" role="tabpanel"
+                                        aria-labelledby="location-tab">
+                                        <div class="card bg-transparent border-0">
+                                            <div class="card-header d-block d-md-none bg-transparent px-0 py-1 border-bottom-0"
+                                                id="heading-location">
+                                                <h5 class="mb-0">
+                                                    <button
+                                                        class="btn btn-block collapse-parent collapsed border shadow-none"
+                                                        data-toggle="collapse" data-number="3."
+                                                        data-target="#location-collapse" aria-expanded="true"
+                                                        aria-controls="location-collapse">
+                                                        <span class="number">3.</span> Location
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            <div id="location-collapse" class="collapse collapsible"
+                                                aria-labelledby="heading-location"
+                                                data-parent="#collapse-tabs-accordion">
+                                                <div class="card-body py-4 py-md-0 px-0">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="card mb-6">
+                                                                <div class="card-body p-6">
+                                                                    <h3
+                                                                        class="card-title mb-0 text-heading fs-22 lh-15">
+                                                                        Lokasyon Ayaları</h3>
+                                                                    <p class="card-text mb-5">Emlak Lokasyon Bilgisi
+                                                                        Buraya Girin</p>
+                                                                    <div class="form-group">
+                                                                        <label for="address"
+                                                                            class="text-heading">Adres</label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-lg border-0"
+                                                                            id="address" name="address">
+                                                                    </div>
+                                                                    <div class="form-row mx-n2">
+                                                                        <div class="col-md-6 col-lg-12 col-xxl-6 px-2">
+                                                                            <div class="form-group">
+                                                                                <label for="state"
+                                                                                    class="text-heading">Eyalete</label>
+                                                                                <input type="text"
+                                                                                    class="form-control form-control-lg border-0"
+                                                                                    id="state" name="state">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-lg-12 col-xxl-6 px-2">
+                                                                            <div class="form-group">
+                                                                                <label for="city"
+                                                                                    class="text-heading">Şehit</label>
+                                                                                <input type="text"
+                                                                                    class="form-control form-control-lg border-0"
+                                                                                    id="city" name="city">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-row mx-n2">
+                                                                        <div class="col-md-6 col-lg-12 col-xxl-6 px-2">
+                                                                            <div class="form-group">
+                                                                                <label for="neighborhood"
+                                                                                    class="text-heading">Mahalle</label>
+                                                                                <input type="text"
+                                                                                    class="form-control form-control-lg border-0"
+                                                                                    id="neighborhood"
+                                                                                    name="neighborhood">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-lg-12 col-xxl-6 px-2">
+                                                                            <div class="form-group">
+                                                                                <label for="zip"
+                                                                                    class="text-heading">Zip</label>
+                                                                                <input type="text"
+                                                                                    class="form-control form-control-lg border-0"
+                                                                                    id="zip" name="zip">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group mb-md-0">
+                                                                        <label for="country" class="text-heading">Ülke
+                                                                        </label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-lg border-0"
+                                                                            id="country" name="country">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="card mb-6">
+                                                                <div class="card-body p-6">
+                                                                    <h3
+                                                                        class="card-title mb-6 text-heading fs-22 lh-15">
+                                                                        Place the
+                                                                        listing pin on the map</h3>
+                                                                    <div id="map"
+                                                                        class="mapbox-gl map-point-animate mb-6"
+                                                                        style="height: 296px"
+                                                                        data-mapbox-access-token="pk.eyJ1IjoiZHVvbmdsaCIsImEiOiJjanJnNHQ4czExMzhyNDVwdWo5bW13ZmtnIn0.f1bmXQsS6o4bzFFJc8RCcQ"
+                                                                        data-mapbox-options='{"center":[-73.981566, 40.739011],"setLngLat":[-73.981566, 40.739011]}'
+                                                                        data-mapbox-marker='[{"position":[-73.981566, 40.739011],"className":"marker","backgroundImage":"images/googlle-market-01.png","backgroundRepeat":"no-repeat","width":"32px","height":"40px"}]'>
+                                                                    </div>
+                                                                    <div class="form-row mx-n2">
+                                                                        <div class="col-md-6 col-lg-12 col-xxl-6 px-2">
+                                                                            <div class="form-group mb-md-0">
+                                                                                <label for="latitude"
+                                                                                    class="text-heading">Enlem
+                                                                                </label>
+                                                                                <input type="text"
+                                                                                    class="form-control form-control-lg border-0"
+                                                                                    id="latitude" name="latitude">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-lg-12 col-xxl-6 px-2">
+                                                                            <div class="form-group mb-md-0">
+                                                                                <label for="longitude"
+                                                                                    class="text-heading">Boylam</label>
+                                                                                <input type="text"
+                                                                                    class="form-control form-control-lg border-0"
+                                                                                    id="longitude" name="longitude">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-wrap">
+                                                        <a href="#"
+                                                            class="btn btn-lg bg-hover-white border rounded-lg mb-3 mr-auto prev-button">
+                                                            <span class="d-inline-block text-primary mr-2 fs-16"><i
+                                                                    class="fal fa-long-arrow-left"></i></span>Prev step
+                                                        </a>
+                                                        <button class="btn btn-lg btn-primary next-button mb-3">Next
+                                                            step
+                                                            <span class="d-inline-block ml-2 fs-16"><i
+                                                                    class="fal fa-long-arrow-right"></i></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane tab-pane-parent fade px-0" id="detail" role="tabpanel"
+                                        aria-labelledby="detail-tab">
+                                        <div class="card bg-transparent border-0">
+                                            <div class="card-header d-block d-md-none bg-transparent px-0 py-1 border-bottom-0"
+                                                id="heading-detail">
+                                                <h5 class="mb-0">
+                                                    <button
+                                                        class="btn btn-block collapse-parent collapsed border shadow-none"
+                                                        data-toggle="collapse" data-number="4."
+                                                        data-target="#detail-collapse" aria-expanded="true"
+                                                        aria-controls="detail-collapse">
+                                                        <span class="number">4.</span> Detail
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            <div id="detail-collapse" class="collapse collapsible"
+                                                aria-labelledby="heading-detail" data-parent="#collapse-tabs-accordion">
+                                                <div class="card-body py-4 py-md-0 px-0">
+                                                    <div class="card mb-6">
+                                                        <div class="card-body p-6">
+                                                            <h3 class="card-title mb-0 text-heading fs-22 lh-15">Emlak Detayları</h3>
+                                                            <p class="card-text mb-5">Olmayan Detayları Boş Bırakın</p>
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label for="size-in-ft"
+                                                                            class="text-heading">Büyüklük <span
+                                                                                class="text-muted">(zorunlu)</span></label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-lg border-0"
+                                                                            id="size_in_ft" name="size_in_ft">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label for="lot-size-in-ft"
+                                                                            class="text-heading">Arsa Büyüklüğü <span
+                                                                                class="text-muted">(zorunlu)</span></label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-lg border-0"
+                                                                            id="lot_size_in_ft" name="lot_size_in_ft">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label for="room"
+                                                                            class="text-heading">Oda Sayısı</label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-lg border-0"
+                                                                            id="rooms" name="rooms">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label for="bedrooms"
+                                                                            class="text-heading">Yatak Odası</label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-lg border-0"
+                                                                            id="bedrooms" name="bedrooms">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label for="bathrooms"
+                                                                            class="text-heading">Banyo</label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-lg border-0"
+                                                                            id="bathrooms" name="bathrooms">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label for="customID"
+                                                                            class="text-heading">Özel ID <span
+                                                                                class="text-muted">(özel bir id belirlemek istiyorsanız benzersiz bir değer girin)</span></label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-lg border-0"
+                                                                            id="customID" name="customID">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label for="garages"
+                                                                            class="text-heading">Garaj Sayısı</label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-lg border-0"
+                                                                            id="garages" name="garages">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label for="garage-size"
+                                                                            class="text-heading">Garaj Büyüklüğü</label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-lg border-0"
+                                                                            id="garage-size" name="garage-size">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label for="year-built"
+                                                                            class="text-heading">İnşa Edildiği Yıl <span
+                                                                                class="text-muted"></span></label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-lg border-0"
+                                                                            id="year-built" name="year-built">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label for="available-from"
+                                                                            class="text-heading">Tarihinden İtibaren Kullanılabilir
+                                                                            <span
+                                                                                class="text-muted">(tarih)</span></label>
+                                                                        <input type="date"
+                                                                            class="form-control form-control-lg border-0"
+                                                                            id="available-from" name="available-from">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label for="basement"
+                                                                            class="text-heading">Bodrum</label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-lg border-0"
+                                                                            id="basement" name="basement">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label for="extra-details"
+                                                                            class="text-heading">Ayrıca Detaylar</label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-lg border-0"
+                                                                            id="extra-details" name="extra-details">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label for="roofing"
+                                                                            class="text-heading">Çatı Kaplama</label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-lg border-0"
+                                                                            id="roofing" name="roofing">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label for="exterior-material"
+                                                                            class="text-heading">Dış Malzeme</label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-lg border-0"
+                                                                            id="exterior-material"
+                                                                            name="exterior-material">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label for="structure-type"
+                                                                            class="text-heading">Yapı Tipi</label>
+                                                                        <select
+                                                                            class="form-control border-0 shadow-none form-control-lg selectpicker"
+                                                                            title="Bina Yapısı" data-style="btn-lg py-2 h-52"
+                                                                            id="structure-type" name="structure-type">
+                                                                            <option value="tas">Taş</option>
+                                                                            <option value="prefabrik">Prefabrik</option>
+                                                                            <option value="ahsap">Ahşap</option>
+                                                                            <option value="diger">Diğer</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <div class="form-group mb-0">
+                                                                        <label for="owner" class="text-heading">Not</label>
+                                                                        <textarea class="form-control border-0"
+                                                                            id="agent_nots"
+                                                                            name="agent_nots"></textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-6">
+                                                        <div class="card-body p-6">
+                                                            <h3 class="card-title mb-0 text-heading fs-22 lh-15">Bina Enerji Durumu</h3>
+                                                            <p class="card-text mb-5">Bina Enerjisi ile ilgili bilgileri buraada belirtin.</p>
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <div class="form-group mb-lg-0">
+                                                                        <label for="energy-class"
+                                                                            class="text-heading">Isınma Türü</label>
+                                                                            <input type="text"
+                                                                            class="form-control form-control-lg border-0"
+                                                                            id="energy-class"
+                                                                            name="energy-class">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-wrap">
+                                                        <a href="#"
+                                                            class="btn btn-lg bg-hover-white border rounded-lg mb-3 mr-auto prev-button">
+                                                            <span class="d-inline-block text-primary mr-2 fs-16"><i
+                                                                    class="fal fa-long-arrow-left"></i></span>Prev step
+                                                        </a>
+                                                        <button class="btn btn-lg btn-primary next-button mb-3">Next
+                                                            step
+                                                            <span class="d-inline-block ml-2 fs-16"><i
+                                                                    class="fal fa-long-arrow-right"></i></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane tab-pane-parent fade px-0" id="amenities" role="tabpanel"
+                                        aria-labelledby="amenities-tab">
+                                        <div class="card bg-transparent border-0">
+                                            <div class="card-header d-block d-md-none bg-transparent px-0 py-1 border-bottom-0"
+                                                id="heading-amenities">
+                                                <h5 class="mb-0">
+                                                    <button
+                                                        class="btn btn-block collapse-parent collapsed border shadow-none"
+                                                        data-toggle="collapse" data-number="5."
+                                                        data-target="#amenities-collapse" aria-expanded="true"
+                                                        aria-controls="amenities-collapse">
+                                                        <span class="number">5.</span> Amenities
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            <div id="amenities-collapse" class="collapse collapsible"
+                                                aria-labelledby="heading-amenities"
+                                                data-parent="#collapse-tabs-accordion">
+                                                <div class="card-body py-4 py-md-0 px-0">
+                                                    <div class="card mb-6">
+                                                        <div class="card-body p-6">
+                                                            <h3 class="card-title mb-0 text-heading fs-22 lh-15">Emlak Detayları</h3>
+                                                            <p class="card-text mb-5">Lorem ipsum dolor sit amet,
+                                                                consectetur
+                                                                adipiscing elit</p>
+                                                            <div class="row">
+                                                                <div class="col-sm-12 col-lg-12">
+                                                                    <div class="form-group">
+                                                                        <select
+                                                                            class="form-control border-0 shadow-none form-control-lg selectpicker"
+                                                                            title="Dil Seçiniz*"
+                                                                            data-style="btn-lg py-2 h-52"
+                                                                            id="language" name="language">
+                                                                            <option value="tr">Türkçe</option>
+                                                                            <option value="en">İngilizce</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-wrap">
+                                                        <a href="#"
+                                                            class="btn btn-lg bg-hover-white border rounded-lg mb-3 mr-auto prev-button">
+                                                            <span class="d-inline-block text-primary mr-2 fs-16"><i
+                                                                    class="fal fa-long-arrow-left"></i></span>Önceki
+                                                            Adım
+                                                        </a>
+                                                        <button class="btn btn-lg btn-primary mb-3" type="submit">Ürün
+                                                            Ekle
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>

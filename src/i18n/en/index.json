@@ -1,0 +1,15 @@
+{
+    "CORE": {
+        "SELECT": "Select"
+    },
+    "MENU": {
+        "HOME": "Home",
+        "CATEGORY": "Category",
+        "SELECT_LANGUAGE": "Select Language"
+    },
+    "SEARCH_BAR": {
+        "HOME_TYPE": "Type",
+        "LOCATION": "Location",
+        "SEARCH": "Search"
+    }
+}

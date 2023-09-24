@@ -1,0 +1,23 @@
+{
+    "CORE": {
+        "SELECT": "Seçiniz"
+    },
+    "MENU": {
+        "HOME": "Anasayfa",
+        "CATEGORY": "Kategoriler",
+        "SELECT_LANGUAGE": "Dil Seçiniz"
+    },
+    "SEARCH_BAR": {
+        "HOME_TYPE": "Emlak Tipi",
+        "LOCATION": "Konum",
+        "SEARCH": "Ara"
+    },
+    "BANNER": {
+        "TOP":"Arayın",
+        "TITLE": "Hayalinizdeki Evi",
+        "DESCRIPTION": "Her yıl yüzlerce müşteri bizimle"
+    },
+    "BUTTON": {
+        "ALL": "Tümü"
+    }
+}
