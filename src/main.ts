@@ -29,11 +29,15 @@ async function bootstrap() {
   await app.register(secureSession, {
     secret: 'averylogphrasebiggerthanthirtytwochars',
     salt: 'mq9hDxBVDbspDR6n',
+    cookieName: 'realestate',
     cookie: {
-      path: 'app'
+      path: '/',
+      httpOnly: true,
+      secure: false,
+      maxAge: 1000 * 60 * 60 // 7 days
     }
   });
   app.use(cookieParser());
-  await app.listen(3000);
+  await app.listen(process.env.PORT ?? 3000, process.env.HOST || '0.0.0.0');
 }
 bootstrap();

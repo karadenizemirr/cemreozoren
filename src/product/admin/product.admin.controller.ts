@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Render, Res, UseInterceptors } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, Render, Res, UseInterceptors } from "@nestjs/common";
 import { ProductService } from "../product.service";
 import { CategoryService } from "src/category/category.service";
 import { FilesInterceptor, MemoryStorageFile, UploadedFiles } from "@blazity/nest-file-fastify";
@@ -36,5 +36,11 @@ export class ProductAdminController {
             title: 'Ürünler',
             products: products
         }
+    }
+
+    @Get('delete/:id')
+    async get_delete(@Param('id') id:number, @Res() response: Response){
+        await this.productService.get_product_delete(id)
+        response.redirect(302, '/admin/product')
     }
 }

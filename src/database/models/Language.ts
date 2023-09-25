@@ -14,7 +14,7 @@ export class Language {
     @JoinColumn()
     category: Category
 
-    @OneToOne(() => Product, product => product.language)
+    @OneToOne(() => Product, product => product.language, {onDelete: 'CASCADE'})
     @JoinColumn()
     product: Product
 }

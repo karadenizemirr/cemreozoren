@@ -5,6 +5,7 @@ import { CategoryService } from './category/category.service';
 import { Request, Response } from 'express';
 import { LocationService } from './location/location.service';
 import { ProductService } from './product/product.service';
+import { VisitorService } from './customService/visitor.service';
 
 @Controller()
 export class AppController {
@@ -12,7 +13,8 @@ export class AppController {
     private readonly appService: AppService, 
     private categoryService: CategoryService, 
     private locationService: LocationService,
-    private productService: ProductService
+    private productService: ProductService,
+    private visitorService: VisitorService
     ) {}
 
   @Get()
@@ -21,7 +23,6 @@ export class AppController {
     let categories:any;
     let products:any;
     const locations = await this.locationService.get_all_location()
-
 
     if (req.cookies.lang == 'tr' || req.cookies.lang == undefined){
       categories = await this.categoryService.get_all_category_tr()
@@ -49,5 +50,19 @@ export class AppController {
   async get_eng(@Session() session:secureSession.Session, @Res() response: Response): Promise<void>{
     response.cookie('lang', 'en')
     response.redirect(302, '/')
+  }
+
+  @Get('dashboard')
+  @Render('admin/index')
+  async get_dashboard(){
+    const products = await this.productService.get_all_product()
+    const length = products.length
+    const visitors = await this.visitorService.get_visitors()
+
+    return {
+      title: 'Yönetici Paneli',
+      product_lenght: length,
+      visitors: visitors
+    }
   }
 }

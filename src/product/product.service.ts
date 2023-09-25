@@ -246,4 +246,16 @@ export class ProductService {
             return;
         }
     }
+
+    async get_product_delete(id:number):Promise<void>{
+        try{
+            await this.productRepository.delete(
+                {
+                    id: id
+                }
+            )
+        }catch(err){
+            return;
+        }
+    }
 }

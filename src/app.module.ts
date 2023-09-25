@@ -14,6 +14,11 @@ import { I18nInterceptors } from './i18n/i18n.interceptors';
 import { ProductModule } from './product/product.module';
 import { LocationService } from './location/location.service';
 import { locationProviders } from './database/providers/product/location.providers';
+import { JwtService } from './customService/jwt.service';
+import { UserModule } from './user/user.module';
+import { AuthLogin } from './auth/auth.login.interceptors';
+import { VisitorService } from './customService/visitor.service';
+import { visitorProvider } from './database/providers/visitor.provider';
 
 @Global()
 @Module({
@@ -47,7 +52,8 @@ import { locationProviders } from './database/providers/product/location.provide
         module: ProductAdminModule
       }
     ]),
-    ProductModule
+    ProductModule,
+    UserModule
   ],
   controllers: [AppController],
   providers: [
@@ -59,8 +65,14 @@ import { locationProviders } from './database/providers/product/location.provide
       provide: APP_INTERCEPTOR,
       useClass: I18nInterceptors
     },
-    LocationService, ...locationProviders
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: AuthLogin
+    },
+    LocationService, ...locationProviders,
+    JwtService,
+    VisitorService, ...visitorProvider
   ],
-  exports: [DatabaseModule,...languageProviders]
+  exports: [DatabaseModule,...languageProviders, JwtService]
 })
 export class AppModule {}
