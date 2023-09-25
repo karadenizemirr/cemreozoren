@@ -1,15 +1,36 @@
 {
     "CORE": {
-        "SELECT": "Select"
+        "SELECT": "Select",
+        "SALE" : "For Sale",
+        "RENT": "For Rent"
     },
     "MENU": {
         "HOME": "Home",
-        "CATEGORY": "Category",
+        "CATEGORY": "Categories",
         "SELECT_LANGUAGE": "Select Language"
     },
     "SEARCH_BAR": {
         "HOME_TYPE": "Type",
         "LOCATION": "Location",
         "SEARCH": "Search"
+    },
+    "BANNER": {
+        "TOP":"Find Us",
+        "TITLE": "Your Dream Home",
+        "DESCRIPTION": "Hundreds of customers come  to us every year"
+    },
+    "HOME": {
+        "PROPERTY": "Last Real Estate",
+        "DESCRIPTION": "Popular and new Real Estate",
+        "CATEGORY_TITLE": "Do you wanr to own a new property?"
+    },
+    "BUTTON": {
+        "ALL": "All",
+        "CONTACT": "Contact Us"
+    },
+    "CONTACT": {
+        "TITLE": "Contact our consultansts to learn more about our services.",
+        "DESCRIPTION": "Become one of thousands of users",
+        "CONTACT": "Contact Us"
     }
 }

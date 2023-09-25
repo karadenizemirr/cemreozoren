@@ -15,9 +15,9 @@
 
 <section class="py-11">
     <div class="container">
-        <p class="text-primary font-weight-500 letter-spacing-263 text-center text-uppercase mb-5">Popular Properties
+        <p class="text-primary font-weight-500 letter-spacing-263 text-center text-uppercase mb-5">{{__.HOME.PROPERTY}}</p>
         </p>
-        <h2 class="text-dark text-center mb-8">Check Out Our Popular Properties</h2>
+        <h2 class="text-dark text-center mb-8">{{__.HOME.DESCRIPTION}}</h2>
         <div class="row">
             {{#each products}}
             <div class="col-lg-4 col-sm-6 mb-6" data-animate="zoomIn">
@@ -66,7 +66,7 @@
         </div>
         <div class="text-center">
             <a href="listing-grid-with-left-filter.html"
-                class="btn btn-lg text-secondary btn-accent rounded-lg mt-4">Hepsini Gör
+                class="btn btn-lg text-secondary btn-accent rounded-lg mt-4">{{__.BUTTON.ALL}}
                 <i class="far fa-long-arrow-right ml-1"></i>
             </a>
         </div>
@@ -75,96 +75,21 @@
 
 <section class="bg-gray-02 pt-12 pb-8">
     <div class="container">
-        <h2 class="text-heading lh-184 mxw-571 text-center fs-26 pb-2">Looking to Buy a new property or Sell an
-            existing one?</h2>
+        <h2 class="text-heading lh-184 mxw-571 text-center fs-26 pb-2">{{__.HOME.CATEGORY_TITLE}}</h2>
         <span class="heading-divider mx-auto"></span>
         <div class="slick-slider arrow-haft-inner mx-0"
             data-slick-options='{"slidesToShow": 5, "autoplay":true,"dots":false,"responsive":[{"breakpoint": 1200,"settings": {"slidesToShow":4,"arrows":false}},{"breakpoint": 992,"settings": {"slidesToShow":3,"arrows":false}},{"breakpoint": 768,"settings": {"slidesToShow": 2,"arrows":false,"dots":false,"autoplay":true}},{"breakpoint": 576,"settings": {"slidesToShow": 1,"arrows":false,"dots":false,"autoplay":true}}]}'>
+            {{#each categories}}
             <div class="box px-0 py-6" data-animate="fadeInUp">
                 <a href="listing-with-left-sidebar.html"
                     class="card border-0 align-items-center justify-content-center pt-7 pb-5 px-3 shadow-hover-3 bg-transparent bg-hover-white text-decoration-none">
                     <img src="/public/images/verified.png" class="card-img-top" alt="Apartment">
                     <div class="card-body px-0 pt-5 pb-0">
-                        <h4 class="card-title fs-16 lh-2 text-dark mb-0">Apartment</h4>
+                        <h4 class="card-title fs-16 lh-2 text-dark mb-0">{{this.title}}</h4>
                     </div>
                 </a>
             </div>
-            <div class="box px-0 py-6" data-animate="fadeInUp">
-                <a href="listing-with-left-sidebar.html"
-                    class="card border-0 align-items-center justify-content-center pt-7 pb-5 px-3 shadow-hover-3 bg-transparent bg-hover-white text-decoration-none">
-                    <img src="/public/images/sofa.png" class="card-img-top" alt="House">
-                    <div class="card-body px-0 pt-5 pb-0">
-                        <h4 class="card-title fs-16 lh-2 text-dark mb-0">House</h4>
-                    </div>
-                </a>
-            </div>
-            <div class="box px-0 py-6" data-animate="fadeInUp">
-                <a href="listing-with-left-sidebar.html"
-                    class="card border-0 align-items-center justify-content-center pt-7 pb-5 px-3 shadow-hover-3 bg-transparent bg-hover-white text-decoration-none">
-                    <img src="/public/images/architecture-and-city.png" class="card-img-top" alt="Office">
-                    <div class="card-body px-0 pt-5 pb-0">
-                        <h4 class="card-title fs-16 lh-2 text-dark mb-0">Office</h4>
-                    </div>
-                </a>
-            </div>
-            <div class="box px-0 py-6" data-animate="fadeInUp">
-                <a href="listing-with-left-sidebar.html"
-                    class="card border-0 align-items-center justify-content-center pt-7 pb-5 px-3 shadow-hover-3 bg-transparent bg-hover-white text-decoration-none">
-                    <img src="/public/images/eco-house.png" class="card-img-top" alt="Villa">
-                    <div class="card-body px-0 pt-5 pb-0">
-                        <h4 class="card-title fs-16 lh-2 text-dark mb-0">Villa</h4>
-                    </div>
-                </a>
-            </div>
-            <div class="box px-0 py-6" data-animate="fadeInUp">
-                <a href="listing-with-left-sidebar.html"
-                    class="card border-0 align-items-center justify-content-center pt-7 pb-5 px-3 shadow-hover-3 bg-transparent bg-hover-white text-decoration-none">
-                    <img src="/public/images/town.png" class="card-img-top" alt="Apartment">
-                    <div class="card-body px-0 pt-5 pb-0">
-                        <h4 class="card-title fs-16 lh-2 text-dark mb-0">Apartment</h4>
-                    </div>
-                </a>
-            </div>
-            <div class="box px-0 py-6" data-animate="fadeInUp">
-                <a href="listing-with-left-sidebar.html"
-                    class="card border-0 align-items-center justify-content-center pt-7 pb-5 px-3 shadow-hover-3 bg-transparent bg-hover-white text-decoration-none">
-                    <img src="/public/images/verified.png" class="card-img-top" alt="Apartment">
-                    <div class="card-body px-0 pt-5 pb-0">
-                        <h4 class="card-title fs-16 lh-2 text-dark mb-0">Apartment</h4>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="bg-secondary text-white pt-8 pb-7">
-    <div class="container">
-        <div class="row no-gutters">
-            <div class="col-sm-6 col-lg-3 mb-6 mb-sm-0 px-6 text-center" data-animate="fadeInUp">
-                <div class="counterup fs-56 lh-1 mb-3 pt-2" data-start="0" data-end="1790" data-decimals="0"
-                    data-duration="0" data-separator="">1790
-                </div>
-                <div class="text-uppercase fs-13 lh-184 letter-spacing-163 opacity-7">happy clients</div>
-            </div>
-            <div class="col-sm-6 col-lg-3 mb-6 mb-sm-0 px-6 text-center" data-animate="fadeInUp">
-                <div class="counterup fs-56 lh-1 mb-3 pt-2" data-start="0" data-end="491" data-decimals="0"
-                    data-duration="0" data-separator="">491
-                </div>
-                <div class="text-uppercase fs-13 lh-184 letter-spacing-163 opacity-7">finished projects</div>
-            </div>
-            <div class="col-sm-6 col-lg-3 mb-6 mb-sm-0 px-6 text-center" data-animate="fadeInUp">
-                <div class="counterup fs-56 lh-1 mb-3 pt-2" data-start="0" data-end="245" data-decimals="0"
-                    data-duration="0" data-separator="">245
-                </div>
-                <div class="text-uppercase fs-13 lh-184 letter-spacing-163 opacity-7">Agents</div>
-            </div>
-            <div class="col-sm-6 col-lg-3 mb-6 mb-sm-0 px-6 text-center" data-animate="fadeInUp">
-                <div class="counterup fs-56 lh-1 mb-3 pt-2" data-start="0" data-end="1090" data-decimals="0"
-                    data-duration="0" data-separator="">1090
-                </div>
-                <div class="text-uppercase fs-13 lh-184 letter-spacing-163 opacity-7">posts</div>
-            </div>
+            {{/each}}
         </div>
     </div>
 </section>
@@ -174,17 +99,15 @@
         <div class="row">
             <div class="col-ld-6 col-sm-7" data-animate="fadeInLeft">
                 <div class="pl-6 border-4x border-left border-primary">
-                    <h2 class="text-heading lh-15 fs-md-32 fs-25">For more information about our services,<span
-                            class="text-primary"> get in touch</span> with our expert consultants</h2>
-                    <p class="lh-2 fs-md-15 mb-0">10 new offers every day. 350 offers on site, Trusted by a community of
-                        thousands of users.</p>
+                    <h2 class="text-heading lh-15 fs-md-32 fs-25">{{__.CONTACT.TITLE}}</h2>
+                    <p class="lh-2 fs-md-15 mb-0">{{__.CONTACT.DESCRIPTION}}</p>
                 </div>
             </div>
             <div class="col-ld-6 col-sm-5 text-center mt-sm-0 mt-8" data-animate="fadeInRight">
                 <i class="fal fa-phone fs-40 text-primary"></i>
-                <p class="fs-13 font-weight-500 letter-spacing-173 text-uppercase lh-2 mt-3">Call for help now!</p>
+                <p class="fs-13 font-weight-500 letter-spacing-173 text-uppercase lh-2 mt-3">{{__.CONTACT.CONTACT}}!</p>
                 <p class="fs-md-42 fs-32 font-weight-600 text-secondary lh-1">1900 68668</p>
-                <a href="#" class="btn btn-lg btn-primary mt-2 px-10">Contact us</a>
+                <a href="#" class="btn btn-lg btn-primary mt-2 px-10">{{__.BUTTON.CONTACT}}</a>
             </div>
         </div>
     </div>

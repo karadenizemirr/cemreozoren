@@ -1,6 +1,8 @@
 {
     "CORE": {
-        "SELECT": "Seçiniz"
+        "SELECT": "Seçiniz",
+        "SALE" : "Satılık",
+        "RENT": "Kiralık"
     },
     "MENU": {
         "HOME": "Anasayfa",
@@ -17,7 +19,24 @@
         "TITLE": "Hayalinizdeki Evi",
         "DESCRIPTION": "Her yıl yüzlerce müşteri bizimle"
     },
+    "HOME": {
+        "PROPERTY": "Son Emlaklar",
+        "DESCRIPTION": "Popüler ve Son Eklenen Emlakları İncele",
+        "CATEGORY_TITLE": "Yeni bir emlak sahibi olmak mı istiyorsunuz ?"
+    },
     "BUTTON": {
-        "ALL": "Tümü"
+        "ALL": "Tümü",
+        "CONTACT": "İletişime Geçin"
+    },
+    "CONTACT": {
+        "TITLE": "Hizmetlerimiz hakkında daha fazla bilgi almak için danışmanlarımızla iletişime geçin.",
+        "DESCRIPTION": "Binlerce kullanıcıdan birisi olun",
+        "CONTACT": "İletişime Geçin"
+    },
+    "LINKS": {
+        "TERMS_OF_USE": "Kullanım Şartları",
+        "PRIVACY_POLICY": "Gizlilik Politikası",
+        "ABOUT_US": "Hakkımızda",
+        "CONTACT": "İletişim"
     }
 }

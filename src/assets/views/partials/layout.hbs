@@ -138,7 +138,7 @@
                     class="text-uppercase font-weight-500 opacity-7 text-white letter-spacing-093 mb-1">{{__.SEARCH_BAR.HOME_TYPE}}</label>
                   <select
                     class="form-control selectpicker bg-transparent border-bottom rounded-0 border-input-opacity-02"
-                    name="type" title="Select" data-style="p-0 h-24 lh-17 text-white">
+                    name="type" title="{{__.CORE.SELECT}}" data-style="p-0 h-24 lh-17 text-white">
                     <option value="rent">Kiralık</option>
                     <option value="sale">Satılık</option>
                   </select>
@@ -148,7 +148,7 @@
                     class="text-uppercase font-weight-500 opacity-7 text-white letter-spacing-093 mb-1">{{__.SEARCH_BAR.LOCATION}}</label>
                   <select
                     class="form-control selectpicker bg-transparent border-bottom rounded-0 border-input-opacity-02"
-                    name="location" title="Select" data-style="p-0 h-24 lh-17 text-white">
+                    name="location" title="{{__.CORE.SELECT}}" data-style="p-0 h-24 lh-17 text-white">
                     {{#each locations}}
                     <option value="{{this.city}}">{{this.city}}</option>
                     {{/each}}
