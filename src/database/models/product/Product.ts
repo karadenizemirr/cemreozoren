@@ -1,10 +1,11 @@
-import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Language } from "../Language";
 import { Media } from "./Media";
 import { Location } from "./Location";
 import { Detail } from "./Detail";
 import { Description } from "./Description";
 import { Amenitlies } from "./Amenitlies";
+import { Category } from "../Category";
 
 @Entity()
 export class Product {
@@ -29,6 +30,7 @@ export class Product {
     @OneToOne(() => Description, description => description.product)
     description: Description
 
-    @OneToMany(() => Amenitlies, amenitlies => amenitlies.product)
-    amenitlies: Amenitlies[]
+    @ManyToOne(() => Category, category => category.product)
+    category: Category
+
 }

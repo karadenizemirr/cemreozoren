@@ -12,95 +12,22 @@
             </div>
         </div>
         <div class="galleries position-relative">
-            <ul class="nav nav-pills position-absolute pos-fixed-top-right z-index-3 pt-4 pr-5 flex-nowrap nav-gallery"
-                id="pills-tab" role="tablist">
-                <li class="nav-item mr-2" role="presentation">
-                    <a class="nav-link p-0 active d-flex align-items-center justify-content-center w-48px h-48 bg-white text-heading bg-hover-primary hover-white rounded-circle fs-18"
-                        data-toggle="pill" href="#image" role="tab" aria-selected="true">
-                        <i class="fal fa-camera"></i>
-                    </a>
-                </li>
-                <li class="nav-item mr-2" role="presentation">
-                    <a class="nav-link p-0 d-flex align-items-center justify-content-center w-48px h-48 bg-white text-heading bg-hover-primary hover-white rounded-circle fs-18"
-                        data-toggle="pill" href="#map-view" role="tab" aria-selected="false">
-                        <i class="fal fa-map-marked-alt"></i>
-                    </a>
-                </li>
-            </ul>
             <div class="tab-content p-0 shadow-none">
                 <div class="tab-pane fade show active" id="image" role="tabpanel">
                     <div class="slick-slider dots-white arrow-inner"
                         data-slick-options='{"slidesToShow": 1, "autoplay":false}'>
+                        {{#each result.media}}
                         <div class="box">
                             <div class="item item-size-3-2">
                                 <div class="card p-0">
-                                    <a href="/public/images/single-property-lg-1.jpg" class="card-img"
+                                    <a href="/public/uploads/{{this.image_path}}" class="card-img"
                                         data-gtf-mfp="true" data-gallery-id="03"
-                                        style="background-image:url('/public/images/single-property-lg-1.jpg')">
+                                        style="background-image:url('/public/uploads/{{this.image_path}}')">
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="box">
-                            <div class="item item-size-3-2">
-                                <div class="card p-0">
-                                    <a href="/public/images/single-property-lg-4.jpg" class="card-img"
-                                        data-gtf-mfp="true" data-gallery-id="03"
-                                        style="background-image:url('/public/images/single-property-lg-4.jpg')">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box">
-                            <div class="item item-size-3-2">
-                                <div class="card p-0">
-                                    <a href="/public/images/single-property-6.jpg" class="card-img" data-gtf-mfp="true"
-                                        data-gallery-id="03"
-                                        style="background-image:url('/public/images/single-property-6.jpg')">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box">
-                            <div class="item item-size-3-2">
-                                <div class="card p-0">
-                                    <a href="/public/images/single-property-lg-3.jpg" class="card-img"
-                                        data-gtf-mfp="true" data-gallery-id="03"
-                                        style="background-image:url('/public/images/single-property-lg-3.jpg')">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box">
-                            <div class="item item-size-3-2">
-                                <div class="card p-0">
-                                    <a href="/public/images/single-property-7.jpg" class="card-img" data-gtf-mfp="true"
-                                        data-gallery-id="03"
-                                        style="background-image:url('/public/images/single-property-7.jpg')">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box">
-                            <div class="item item-size-3-2">
-                                <div class="card p-0">
-                                    <a href="/public/images/single-property-8.jpg" class="card-img" data-gtf-mfp="true"
-                                        data-gallery-id="03"
-                                        style="background-image:url('/public/images/single-property-8.jpg')">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box">
-                            <div class="item item-size-3-2">
-                                <div class="card p-0">
-                                    <a href="/public/images/single-property-lg-2.jpg" class="card-img"
-                                        data-gtf-mfp="true" data-gallery-id="03"
-                                        style="background-image:url('/public/images/single-property-lg-2.jpg')">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        {{/each}}
                     </div>
                 </div>
             </div>
@@ -113,22 +40,14 @@
             <article class="col-lg-12">
                 <section class="pb-8 px-6 pt-5 bg-white rounded-lg">
                     <h4 class="fs-22 text-heading mb-2">Description</h4>
-                    <p class="mb-0 lh-214">Massa tempor nec feugiat nisl pretium. Egestas fringilla phasellus
-                        faucibus scelerisque eleifend donec. Porta nibh venenatis cras sed felis eget velit
-                        aliquet.
-                        Neque volutpat ac tincidunt vitae semper quis lectus. Turpis in eu mi bibendum neque
-                        egestas
-                        congue quisque. Sed elementum tempus egestas sed sed risus pretium quam. Dignissim
-                        sodales ut eu
-                        sem. Nibh mauris cursus mattis molestie a iaculis at erat pellentesque. Id interdum
-                        velit
-                        laoreet
-                        id donec ultrices tincidunt.</p>
+                    <p class="mb-0 lh-214">
+                        {{result.description.description}}
+                    </p>
                 </section>
                 <section class="mt-2 pb-3 px-6 pt-5 bg-white rounded-lg">
                     <h4 class="fs-22 text-heading mb-6">Facts and Features</h4>
                     <div class="row">
-                        <div class="col-lg-3 col-sm-4 mb-6">
+                        <div class="col-lg-4 col-sm-4 mb-6">
                             <div class="media">
                                 <div class="p-2 shadow-xxs-1 rounded-lg mr-2">
                                     <svg class="icon icon-family fs-32 text-primary">
@@ -138,11 +57,11 @@
                                 <div class="media-body">
                                     <h5 class="my-1 fs-14 text-uppercase letter-spacing-093 font-weight-normal">
                                         Type</h5>
-                                    <p class="mb-0 fs-13 font-weight-bold text-heading">Single Family</p>
+                                    <p class="mb-0 fs-13 font-weight-bold text-heading">{{result.description.property_status}}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-sm-4 mb-6">
+                        <div class="col-lg-4 col-sm-4 mb-6">
                             <div class="media">
                                 <div class="p-2 shadow-xxs-1 rounded-lg mr-2">
                                     <svg class="icon icon-year fs-32 text-primary">
@@ -152,11 +71,11 @@
                                 <div class="media-body">
                                     <h5 class="my-1 fs-14 text-uppercase letter-spacing-093 font-weight-normal">
                                         year built</h5>
-                                    <p class="mb-0 fs-13 font-weight-bold text-heading">2020</p>
+                                    <p class="mb-0 fs-13 font-weight-bold text-heading">{{result.detail.year_built}}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-sm-4 mb-6">
+                        <div class="col-lg-4 col-sm-4 mb-6">
                             <div class="media">
                                 <div class="p-2 shadow-xxs-1 rounded-lg mr-2">
                                     <svg class="icon icon-heating fs-32 text-primary">
@@ -166,25 +85,11 @@
                                 <div class="media-body">
                                     <h5 class="my-1 fs-14 text-uppercase letter-spacing-093 font-weight-normal">
                                         heating</h5>
-                                    <p class="mb-0 fs-13 font-weight-bold text-heading">Radiant</p>
+                                    <p class="mb-0 fs-13 font-weight-bold text-heading">{{result.detail.energy_class}}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-sm-4 mb-6">
-                            <div class="media">
-                                <div class="p-2 shadow-xxs-1 rounded-lg mr-2">
-                                    <svg class="icon icon-price fs-32 text-primary">
-                                        <use xlink:href="#icon-price"></use>
-                                    </svg>
-                                </div>
-                                <div class="media-body">
-                                    <h5 class="my-1 fs-14 text-uppercase letter-spacing-093 font-weight-normal">
-                                        SQFT</h5>
-                                    <p class="mb-0 fs-13 font-weight-bold text-heading">979.0</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-4 mb-6">
+                        <div class="col-lg-4 col-sm-4 mb-6">
                             <div class="media">
                                 <div class="p-2 shadow-xxs-1 rounded-lg mr-2">
                                     <svg class="icon icon-bedroom fs-32 text-primary">
@@ -194,11 +99,11 @@
                                 <div class="media-body">
                                     <h5 class="my-1 fs-14 text-uppercase letter-spacing-093 font-weight-normal">
                                         Bedrooms</h5>
-                                    <p class="mb-0 fs-13 font-weight-bold text-heading">3</p>
+                                    <p class="mb-0 fs-13 font-weight-bold text-heading">{{result.detail.bedrooms}}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-sm-4 mb-6">
+                        <div class="col-lg-4 col-sm-4 mb-6">
                             <div class="media">
                                 <div class="p-2 shadow-xxs-1 rounded-lg mr-2">
                                     <svg class="icon icon-sofa fs-32 text-primary">
@@ -208,11 +113,11 @@
                                 <div class="media-body">
                                     <h5 class="my-1 fs-14 text-uppercase letter-spacing-093 font-weight-normal">
                                         bathrooms</h5>
-                                    <p class="mb-0 fs-13 font-weight-bold text-heading">2</p>
+                                    <p class="mb-0 fs-13 font-weight-bold text-heading">{{this.detail.bathrooms}}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-sm-4 mb-6">
+                        <div class="col-lg-4 col-sm-4 mb-6">
                             <div class="media">
                                 <div class="p-2 shadow-xxs-1 rounded-lg mr-2">
                                     <svg class="icon icon-Garage fs-32 text-primary">
@@ -222,21 +127,7 @@
                                 <div class="media-body">
                                     <h5 class="my-1 fs-14 text-uppercase letter-spacing-093 font-weight-normal">
                                         GARAGE</h5>
-                                    <p class="mb-0 fs-13 font-weight-bold text-heading">1</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-4 mb-6">
-                            <div class="media">
-                                <div class="p-2 shadow-xxs-1 rounded-lg mr-2">
-                                    <svg class="icon icon-status fs-32 text-primary">
-                                        <use xlink:href="#icon-status"></use>
-                                    </svg>
-                                </div>
-                                <div class="media-body">
-                                    <h5 class="my-1 fs-14 text-uppercase letter-spacing-093 font-weight-normal">
-                                        Status</h5>
-                                    <p class="mb-0 fs-13 font-weight-bold text-heading">Active</p>
+                                    <p class="mb-0 fs-13 font-weight-bold text-heading">{{result.detail.garages}}</p>
                                 </div>
                             </div>
                         </div>
@@ -246,375 +137,58 @@
                     <h4 class="fs-22 text-heading mb-4">Additional Details</h4>
                     <div class="row">
                         <dl class="col-sm-6 mb-0 d-flex">
-                            <dt class="w-110px fs-14 font-weight-500 text-heading pr-2">Property ID</dt>
-                            <dd>AD-2910</dd>
-                        </dl>
-                        <dl class="col-sm-6 mb-0 d-flex">
                             <dt class="w-110px fs-14 font-weight-500 text-heading pr-2">Price</dt>
-                            <dd>$890.000</dd>
-                        </dl>
-                        <dl class="col-sm-6 mb-0 d-flex">
-                            <dt class="w-110px fs-14 font-weight-500 text-heading pr-2">Property type</dt>
-                            <dd>Apartment, bar, cafe, villa</dd>
-                        </dl>
-                        <dl class="col-sm-6 mb-0 d-flex">
-                            <dt class="w-110px fs-14 font-weight-500 text-heading pr-2">Property status</dt>
-                            <dd>For Sale</dd>
+                            <dd>{{result.description.before_price_label}}&nbsp;{{result.description.price_in}}&nbsp;{{result.description.after_price_label}}</dd>
                         </dl>
                         <dl class="col-sm-6 mb-0 d-flex">
                             <dt class="w-110px fs-14 font-weight-500 text-heading pr-2">Rooms</dt>
-                            <dd>4</dd>
+                            <dd>{{result.detail.rooms}}</dd>
                         </dl>
                         <dl class="col-sm-6 mb-0 d-flex">
                             <dt class="w-110px fs-14 font-weight-500 text-heading pr-2">Bedrooms</dt>
-                            <dd>3</dd>
+                            <dd>{{resut.detail.bedrooms}}</dd>
                         </dl>
                         <dl class="col-sm-6 mb-0 d-flex">
                             <dt class="w-110px fs-14 font-weight-500 text-heading pr-2">Size</dt>
-                            <dd>900SqFt</dd>
+                            <dd>{{result.detail.size_in_ft}}m²</dd>
                         </dl>
                         <dl class="col-sm-6 mb-0 d-flex">
                             <dt class="w-110px fs-14 font-weight-500 text-heading pr-2">Bathrooms</dt>
-                            <dd>2</dd>
+                            <dd>{{result.detail.bathrooms}}</dd>
                         </dl>
                         <dl class="col-sm-6 mb-0 d-flex">
                             <dt class="w-110px fs-14 font-weight-500 text-heading pr-2">Garage</dt>
-                            <dd>1</dd>
-                        </dl>
-                        <dl class="col-sm-6 mb-0 d-flex">
-                            <dt class="w-110px fs-14 font-weight-500 text-heading pr-2">Bathrooms</dt>
-                            <dd>2000 SqFt</dd>
+                            <dd>{{result.detail.garages}}</dd>
                         </dl>
                         <dl class="col-sm-6 mb-0 d-flex">
                             <dt class="w-110px fs-14 font-weight-500 text-heading pr-2">Garage size</dt>
-                            <dd>50 SqFt</dd>
+                            <dd>{{result.detail.garage_size}}</dd>
                         </dl>
                         <dl class="col-sm-6 mb-0 d-flex">
                             <dt class="w-110px fs-14 font-weight-500 text-heading pr-2">Year build</dt>
-                            <dd>2020</dd>
+                            <dd>{{result.detail.year_built}}</dd>
                         </dl>
-                        <dl class="offset-sm-6 col-sm-6 mb-0 d-flex">
-                            <dt class="w-110px fs-14 font-weight-500 text-heading pr-2">Label</dt>
-                            <dd>Bestseller</dd>
-                        </dl>
-                    </div>
-                </section>
-                
-                <section class="mt-2 pb-2 px-6 pt-6 bg-white rounded-lg">
-                    <div class="card border-0">
-                        <div class="card-body p-0">
-                            <h3 class="fs-16 lh-2 text-heading mb-0 d-inline-block pr-4 border-bottom border-primary">
-                                5
-                                Reviews</h3>
-                            <div class="media border-top pt-7 pb-6 d-sm-flex d-block text-sm-left text-center">
-                                <img src="/public/images/review-07.jpg" alt="Danny Fox" class="mr-sm-8 mb-4 mb-sm-0">
-                                <div class="media-body">
-                                    <div class="row mb-1 align-items-center">
-                                        <div class="col-sm-6 mb-2 mb-sm-0">
-                                            <h4 class="mb-0 text-heading fs-14">Danny Fox</h4>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <ul
-                                                class="list-inline d-flex justify-content-sm-end justify-content-center mb-0">
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-warning fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-warning fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-warning fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-warning fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-warning fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <p class="mb-3 pr-xl-17">Very good and fast support during the week. Thanks
-                                        for
-                                        always
-                                        keeping your WordPress themes up to date. Your level of support and
-                                        dedication
-                                        is second to none.</p>
-                                    <div class="d-flex justify-content-sm-start justify-content-center">
-                                        <p class="mb-0 text-muted fs-13 lh-1">02 Dec 2020 at 2:40pm</p>
-                                        <a href="#"
-                                            class="mb-0 text-heading border-left border-dark hover-primary lh-1 ml-2 pl-2">Reply</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="media border-top py-6 d-sm-flex d-block text-sm-left text-center">
-                                <img src="/public/images/review-08.jpg" alt="Viola Austin" class="mr-sm-8 mb-4 mb-sm-0">
-                                <div class="media-body">
-                                    <div class="row mb-1 align-items-center">
-                                        <div class="col-sm-6 mb-2 mb-sm-0">
-                                            <h4 class="mb-0 text-heading fs-14">Viola Austin</h4>
-                                        </div>
-                                        <div class="col-sm-6 ">
-                                            <ul
-                                                class="list-inline d-flex justify-content-sm-end justify-content-center mb-0">
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-warning fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-warning fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-warning fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-warning fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-warning fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <p class="mb-3 pr-xl-17">Very good and fast support during the week. Thanks
-                                        for
-                                        always
-                                        keeping your WordPress themes up to date. Your level of support and
-                                        dedication
-                                        is second to none.</p>
-                                    <div class="d-flex justify-content-sm-start justify-content-center">
-                                        <p class="mb-0 text-muted fs-13 lh-1">02 Dec 2020 at 2:40pm</p>
-                                        <a href="#"
-                                            class="mb-0 text-heading border-left border-dark hover-primary lh-1 ml-2 pl-2">Reply</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="media border-top py-6 d-sm-flex d-block text-sm-left text-center">
-                                <img src="/public/images/review-09.jpg" alt="Nettie Singleton"
-                                    class="mr-sm-8 mb-4 mb-sm-0">
-                                <div class="media-body">
-                                    <div class="row mb-1 align-items-center">
-                                        <div class="col-sm-6 mb-2 mb-sm-0">
-                                            <h4 class="mb-0 text-heading fs-14">Nettie Singleton</h4>
-                                        </div>
-                                        <div class="col-sm-6 ">
-                                            <ul
-                                                class="list-inline d-flex justify-content-sm-end justify-content-center mb-0">
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-warning fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-warning fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-warning fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-warning fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-warning fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <p class="mb-3 pr-xl-17">Very good and fast support during the week. Thanks
-                                        for
-                                        always
-                                        keeping your WordPress themes up to date. Your level of support and
-                                        dedication
-                                        is second to none.</p>
-                                    <div class="d-flex justify-content-sm-start justify-content-center">
-                                        <p class="mb-0 text-muted fs-13 lh-1">02 Dec 2020 at 2:40pm</p>
-                                        <a href="#"
-                                            class="mb-0 text-heading border-left border-dark hover-primary lh-1 ml-2 pl-2">Reply</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="media border-top py-6 d-sm-flex d-block text-sm-left text-center">
-                                <img src="/public/images/review-07.jpg" alt="Vernon Fisher"
-                                    class="mr-sm-8 mb-4 mb-sm-0">
-                                <div class="media-body">
-                                    <div class="row mb-1 align-items-center">
-                                        <div class="col-sm-6 mb-2 mb-sm-0">
-                                            <h4 class="mb-0 text-heading fs-14">Vernon Fisher</h4>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <ul
-                                                class="list-inline d-flex justify-content-sm-end justify-content-center mb-0">
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-warning fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-warning fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-warning fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-warning fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-border fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <p class="mb-3 pr-xl-17">Very good and fast support during the week. Thanks
-                                        for
-                                        always
-                                        keeping your WordPress themes up to date. Your level of support and
-                                        dedication
-                                        is second to none.</p>
-                                    <div class="d-flex justify-content-sm-start justify-content-center">
-                                        <p class="mb-0 text-muted fs-13 lh-1">02 Dec 2020 at 2:40pm</p>
-                                        <a href="#"
-                                            class="mb-0 text-heading border-left border-dark hover-primary lh-1 ml-2 pl-2">Reply</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="media border-top py-6 d-sm-flex d-block text-sm-left text-center">
-                                <div
-                                    class="w-82px h-82 mr-2 bg-gray-01 rounded-circle fs-25 font-weight-500 text-muted d-flex align-items-center justify-content-center text-uppercase mr-sm-8 mb-4 mb-sm-0 mx-auto">
-                                    HI
-                                </div>
-                                <div class="media-body">
-                                    <div class="row mb-1 align-items-center">
-                                        <div class="col-sm-6 mb-2 mb-sm-0">
-                                            <h4 class="mb-0 text-heading fs-14">Harry Iglesias</h4>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <ul
-                                                class="list-inline d-flex justify-content-sm-end justify-content-center mb-0">
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-warning fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-warning fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-warning fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-warning fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                                <li class="list-inline-item mr-1">
-                                                    <span class="text-border fs-12 lh-2"><i
-                                                            class="fas fa-star"></i></span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <p class="mb-3 pr-xl-17">Very good and fast support during the week. Thanks
-                                        for
-                                        always
-                                        keeping your WordPress themes up to date. Your level of support and
-                                        dedication
-                                        is second to none.</p>
-                                    <div class="d-flex justify-content-sm-start justify-content-center">
-                                        <p class="mb-0 text-muted fs-13 lh-1">02 Dec 2020 at 2:40pm</p>
-                                        <a href="#"
-                                            class="mb-0 text-heading border-left border-dark hover-primary lh-1 ml-2 pl-2">Reply</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section class="mt-2 pb-7 px-6 pt-6 bg-white rounded-lg">
-                    <div class="card border-0">
-                        <div class="card-body p-0">
-                            <h3 class="fs-16 lh-2 text-heading mb-4">Write A Review</h3>
-                            <form>
-                                <div class="form-group mb-4 d-flex justify-content-start">
-                                    <div class="rate-input">
-                                        <input type="radio" id="star5" name="rate" value="5">
-                                        <label for="star5" title="text" class="mb-0 mr-1 lh-1">
-                                            <i class="fas fa-star"></i>
-                                        </label>
-                                        <input type="radio" id="star4" name="rate" value="4">
-                                        <label for="star4" title="text" class="mb-0 mr-1 lh-1">
-                                            <i class="fas fa-star"></i>
-                                        </label>
-                                        <input type="radio" id="star3" name="rate" value="3">
-                                        <label for="star3" title="text" class="mb-0 mr-1 lh-1">
-                                            <i class="fas fa-star"></i>
-                                        </label>
-                                        <input type="radio" id="star2" name="rate" value="2">
-                                        <label for="star2" title="text" class="mb-0 mr-1 lh-1">
-                                            <i class="fas fa-star"></i>
-                                        </label>
-                                        <input type="radio" id="star1" name="rate" value="1">
-                                        <label for="star1" title="text" class="mb-0 mr-1 lh-1">
-                                            <i class="fas fa-star"></i>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group mb-4">
-                                            <input placeholder="Your Name" class="form-control form-control-lg border-0"
-                                                type="text" name="name">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group mb-4">
-                                            <input type="email" placeholder="Email" name="email"
-                                                class="form-control form-control-lg border-0">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-6">
-                                    <textarea class="form-control form-control-lg border-0" placeholder="Your Review"
-                                        name="message" rows="5"></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-lg btn-primary px-10">Submit</button>
-                            </form>
-                        </div>
                     </div>
                 </section>
                 
                 <section class="mt-2 pb-6 px-6 pt-6 bg-white rounded-lg">
                     <h4 class="fs-22 text-heading mb-6">Virtual Tour</h4>
-                    <iframe height="430"
+                    {{!-- <iframe height="430"
                         src="https://my.matterport.com/show/?m=wWcGxjuUuSb&amp;utm_source=hit-content-embed"
-                        allowfullscreen="" class="w-100"></iframe>
+                        allowfullscreen="" class="w-100"></iframe> --}}
                 </section>
                 <section class="mt-2 pb-6 px-6 pt-6 bg-white rounded-lg">
                     <h4 class="fs-22 text-heading mb-6">Location</h4>
                     <div class="position-relative">
                         <div id="map" class="mapbox-gl map-point-animate"
                             data-mapbox-access-token="pk.eyJ1IjoiZHVvbmdsaCIsImEiOiJjanJnNHQ4czExMzhyNDVwdWo5bW13ZmtnIn0.f1bmXQsS6o4bzFFJc8RCcQ"
-                            data-mapbox-options='{"center":[-73.9927227, 40.6741035],"setLngLat":[-73.9927227, 40.6741035]}'
-                            data-mapbox-marker='[{"position":[-73.9927227, 40.6741035],"className":"marker","backgroundImage":"/public/images/googlle-market-01.png","backgroundRepeat":"no-repeat","width":"30px","height":"40px"}]'>
+                            data-mapbox-options='{"center":[{{this.location.latitude}}, {{this.location.longitude}}],"setLngLat":[{{this.location.latitude}}, {{this.location.longitude}}]}'
+                            data-mapbox-marker='[{"position":[{{this.location.latitude}}, {{this.location.longitude}}],"className":"marker","backgroundImage":"/public/images/googlle-market-01.png","backgroundRepeat":"no-repeat","width":"30px","height":"40px"}]'>
                         </div>
                         <p
                             class="mb-0 p-3 bg-white shadow rounded-lg position-absolute pos-fixed-bottom mb-4 ml-4 lh-17 z-index-2">
-                            62 Gresham St, Victoria Park <br />
-                            WA 6100, Australia</p>
+                            {{result.location.address}} <br />
+                            {{result.location.country}}</p>
                     </div>
                 </section>
             </article>

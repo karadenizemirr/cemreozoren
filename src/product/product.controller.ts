@@ -34,10 +34,29 @@ export class ProductController {
         }else{
             result = await this.productService.get_product_detail_eng(id)
         }
-
         return {
             title: 'Product Detail',
             result: result
         }
+    }
+
+    @Get('category/:name')
+    @Render('home/category/index')
+    async get_product_with_category(@Req() req:Request, @Param('name') name:string){
+        let results:any = undefined;
+
+        if (req.cookies.lang && req.cookies.lang === 'tr' || req.cookies.lang === undefined){
+            results = await this.productService.product_with_cateogry_tr(name)
+        }else {
+            results = await this.productService.product_with_cateogry_eng(name)
+        }
+
+
+        return {
+            title:'Category',
+            result: results
+        }
+
+
     }
 }

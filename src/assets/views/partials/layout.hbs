@@ -129,27 +129,23 @@
                       </a>
                     </li>
                     <li class="list-group-item px-3 px-xl-4 py-2 sidebar-item">
-                      <a href="/admin/product/add"
-                        class="text-heading lh-1 sidebar-link d-flex align-items-center">
+                      <a href="/admin/product/add" class="text-heading lh-1 sidebar-link d-flex align-items-center">
                         <span class="sidebar-item-icon d-inline-block mr-3 text-muted fs-20">
                           <svg class="icon icon-my-properties">
                             <use xlink:href="#icon-my-properties"></use>
                           </svg>
                         </span>
                         <span class="sidebar-item-text">Emlak Ekle</span>
-                        <span class="sidebar-item-number ml-auto text-primary fs-15 font-weight-bold">29</span>
                       </a>
                     </li>
                     <li class="list-group-item px-3 px-xl-4 py-2 sidebar-item">
-                      <a href="/admin/product"
-                        class="text-heading lh-1 sidebar-link d-flex align-items-center">
+                      <a href="/admin/product" class="text-heading lh-1 sidebar-link d-flex align-items-center">
                         <span class="sidebar-item-icon d-inline-block mr-3 text-muted fs-20">
                           <svg class="icon icon-heart">
                             <use xlink:href="#icon-heart"></use>
                           </svg>
                         </span>
                         <span class="sidebar-item-text">Emlaklar</span>
-                        <span class="sidebar-item-number ml-auto text-primary fs-15 font-weight-bold">5</span>
                       </a>
                     </li>
                   </ul>
@@ -220,7 +216,7 @@
                       Çıkış Yap<i class="fas fa-sign-out-alt" style="margin-left: 10px;"></i>
                     </div>
                   </a>
-              </div>
+                </div>
             </nav>
           </div>
         </header>
@@ -267,7 +263,7 @@
                 <ul class="dropdown-menu pt-3 pb-0 pb-lg-3" aria-labelledby="navbar-item-home">
                   {{#each categories}}
                   <li class="dropdown-item">
-                    <a id="navbar-link-home-01" class="dropdown-link" href="home-01.html">
+                    <a id="navbar-link-home-01" class="dropdown-link" href="/product/category/{{this.name}}">
                       {{this.name}}
                     </a>
                   </li>
@@ -277,14 +273,19 @@
             </ul>
             <div class="d-block d-lg-none">
               <ul class="navbar-nav flex-row justify-content-lg-end d-flex flex-wrap py-2">
+                <li class="nav-item">
+                  <a class="nav-link  px-2" href="/user/login"><i class="fas fa-sign-in-alt mr-3"></i>Giriş Yap</a>
+                </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle mr-md-2 pr-2 pl-0 pl-lg-2" href="#" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    {{__.MENU.SELECT_LANGUAGE}}
+                    <i class="fas fa-language mr-3"></i>{{__.MENU.SELECT_LANGUAGE}}
                   </a>
                   <div class="dropdown-menu dropdown-sm dropdown-menu-left">
-                    <a class="dropdown-item" href="/tr">TR</a>
-                    <a class="dropdown-item" href="/eng">EN</a>
+                    <a class="dropdown-item" href="/tr"><img src="/public/images/tr.png" class="mr-2" alt=""
+                        style="max-width: 20px;">TR</a>
+                    <a class="dropdown-item " href="/eng"><img src="/public/images/en.png" class="mr-2" alt=""
+                        style="max-width: 20px;">EN</a>
                   </div>
                 </li>
               </ul>
@@ -292,14 +293,19 @@
           </div>
           <div class="d-none d-lg-block">
             <ul class="navbar-nav flex-row justify-content-lg-end d-flex flex-wrap text-body py-2">
+              <li class="nav-item">
+                <a class="nav-link  px-2" href="/user/login"><i class="fas fa-sign-in-alt mr-3"></i>Giriş Yap</a>
+              </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle mr-md-2 pr-2 pl-0 pl-lg-2" href="#" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
-                  {{__.MENU.SELECT_LANGUAGE}}
+                  <i class="fas fa-language mr-3"></i>{{__.MENU.SELECT_LANGUAGE}}
                 </a>
                 <div class="dropdown-menu dropdown-sm dropdown-menu-right">
-                  <a class="dropdown-item" href="/tr">TR</a>
-                  <a class="dropdown-item " href="/eng">EN</a>
+                  <a class="dropdown-item" href="/tr"><img src="/public/images/tr.png" class="mr-2" alt=""
+                      style="max-width: 20px;">TR</a>
+                  <a class="dropdown-item " href="/eng"><img src="/public/images/en.png" class="mr-2" alt=""
+                      style="max-width: 20px;">EN</a>
                 </div>
               </li>
             </ul>

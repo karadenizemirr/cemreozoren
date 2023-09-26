@@ -43,4 +43,22 @@ export class ProductAdminController {
         await this.productService.get_product_delete(id)
         response.redirect(302, '/admin/product')
     }
+
+    @Get('update/:id')
+    @Render('admin/product/update')
+    async get_edit_product(@Param('id') id:number){
+        const product = await this.productService.get_product_global(id)
+        const categories = await this.categoryService.get_all_category();
+        return {
+            title:'Emlak Güncelle',
+            product: product,
+            categories: categories
+        }
+    }
+
+    @Post('update/:id')
+    async post_edit_product(@Param('id') id:number, @Body() body:any, @Res() response: Response){
+        await this.productService.get_product_update(id, body)
+        response.redirect(302, '/admin/product')
+    }
 }

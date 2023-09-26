@@ -24,6 +24,26 @@ async function bootstrap() {
     layout: 'partials/layout'
   });
 
+  Handlebars.registerHelper('isSelected', function (a, b) {
+    if (a == b) {
+      return 'selected'
+    }
+
+    return ''
+  })
+
+  Handlebars.registerHelper('eq', function (a, b, options) {
+    if (a == b) {
+      return options.fn(this)
+    }
+
+    return options.inverse(this)
+  })
+
+  Handlebars.registerHelper('lookup', function (obj, index, property) {
+    return obj[index][property];
+  });
+
 
   app.register(fastyfyMultipart);
   await app.register(secureSession, {

@@ -19,6 +19,7 @@ import { UserModule } from './user/user.module';
 import { AuthLogin } from './auth/auth.login.interceptors';
 import { VisitorService } from './customService/visitor.service';
 import { visitorProvider } from './database/providers/visitor.provider';
+import { CategoryModule } from './category/category.module';
 
 @Global()
 @Module({
@@ -53,7 +54,8 @@ import { visitorProvider } from './database/providers/visitor.provider';
       }
     ]),
     ProductModule,
-    UserModule
+    UserModule,
+    CategoryModule
   ],
   controllers: [AppController],
   providers: [

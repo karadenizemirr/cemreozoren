@@ -1,9 +1,9 @@
 import { Inject, Injectable } from "@nestjs/common";
-import { IAmenitlies } from "src/database/interface/IAmenitlies";
 import { IDescription } from "src/database/interface/IDescription";
 import { IDetail } from "src/database/interface/IDetail";
 import { ILocation } from "src/database/interface/ILocation";
 import { IMedia } from "src/database/interface/IMedia";
+import { Category } from "src/database/models/Category";
 import { Language } from "src/database/models/Language";
 import { Description } from "src/database/models/product/Description";
 import { Detail } from "src/database/models/product/Detail";
@@ -20,7 +20,8 @@ export class ProductService {
         @Inject('LOCATION_REPOSITORY') private locationRepository: Repository<Location>,
         @Inject('DETAIL_REPOSITORY') private detailRepository: Repository<Detail>,
         @Inject('PRODUCT_REPOSITORY') private productRepository: Repository<Product>,
-        @Inject('LANGUAGE_REPOSITORY') private languageRepository: Repository<Language>
+        @Inject('LANGUAGE_REPOSITORY') private languageRepository: Repository<Language>,
+        @Inject('CATEGORY_REPOSITORY') private categoryRepository: Repository<Category>
     ) { }
 
     async add_product(data:any){
@@ -96,6 +97,15 @@ export class ProductService {
             product.detail = detail_save
             product.media = media_list
             product.language = language
+
+            const category = await this.categoryRepository.findOne(
+                {
+                    where:{
+                        id: data.category_id
+                    }
+                }
+            )
+            product.category = category
             await this.productRepository.save(product)
 
             return true
@@ -247,6 +257,23 @@ export class ProductService {
         }
     }
 
+    async get_product_global(id:number){
+        try{
+            const product = await this.productRepository.findOne(
+                {
+                    relations: ['description', 'location', 'detail', 'media', 'language'],
+                    where:{
+                        id: id
+                    }
+                }
+            )
+
+            return product
+        }catch(err){
+            return;
+        }
+    }
+
     async get_product_delete(id:number):Promise<void>{
         try{
             await this.productRepository.delete(
@@ -254,6 +281,164 @@ export class ProductService {
                     id: id
                 }
             )
+        }catch(err){
+            return;
+        }
+    }
+
+    async get_product_update(id:number, data:any){
+        try{
+            const product = await this.productRepository.findOne(
+                {
+                    relations: ['description', 'location', 'detail', 'media', 'language'],
+                    where:{
+                        id: id
+                    }
+                }
+            )
+
+            if (!product){
+                return;
+            }
+            
+            // Description Update
+            const description = await this.descriptionRepository.findOne(
+                {
+                    where:{
+                        id: product.description.id
+                    }
+                }
+            )
+            description.title = data['description_title'] || null
+            description.description = data['description'] || null
+            description.price_in = data['price_in'] || null
+            description.yearly_tax_rate = data['yearly_tax_rate'] || null
+            description.association_fee = data['association_fee'] || null
+            description.after_price_label = data['after_price_label'] || null
+            description.before_price_label = data['before_price_label'] || null
+            description.property_status = data['property_status'] || null
+            await this.descriptionRepository.save(description)
+
+            // Location Update
+            const location = await this.locationRepository.findOne(
+                {
+                    where: {
+                        id: product.location.id
+                    }
+                }
+            )
+            location.address = data['address'] || null
+            location.city = data['city'] || null
+            location.state = data['state'] || null
+            location.zip = data['zip'] || null
+            location.latitude = data['latitude'] || null
+            location.longitude = data['longitude'] || null
+            location.country = data['country'] || null
+            location.neighborhood = data['neighborhood'] || null
+            await this.locationRepository.save(location)
+
+            // Detail Update
+            const detail = await this.detailRepository.findOne(
+                {
+                    where:{
+                        id: product.detail.id
+                    }
+                }
+            )
+            detail.size_in_ft = data['size_in_ft'] || null
+            detail.lot_size_in_ft = data['lot_size_in_ft'] || null
+            detail.rooms = data['rooms'] || null
+            detail.bedrooms = data['bedrooms'] || null
+            detail.bathrooms = data['bathrooms'] || null
+            detail.custom_id = data['customID'] || null
+            detail.garages = data['garages'] || null
+            detail.garage_size = data['garage-size'] || null
+            detail.year_built = data['year-built'] || null
+            detail.available_from = data['available-from'] || null
+            detail.basement = data['basement'] || null
+            detail.extra_details = data['extra-detail'] || null
+            detail.roofing = data['roofing'] || null
+            detail.exterior_material = data['exterior-material'] || null
+            detail.structure_type = data['structure-type'] || null
+            detail.agent_nots = data['owner'] || null
+            detail.energy_class = data['energy-class'] || null
+            await this.detailRepository.save(detail)
+
+            const language = await this.languageRepository.findOne(
+                {
+                    where:{
+                        id: product.language.id
+                    }
+                }
+            )
+            language.language = data['language']
+            await this.languageRepository.save(language)
+
+            // Product Update
+            product.title = data['description_title']
+            product.description = description
+            product.location = location
+            product.detail = detail
+            product.language = language
+            await this.productRepository.save(product)
+            return true
+        }catch(err){
+            console.log(err)
+            return;
+        }
+    }
+
+    async product_with_cateogry_tr(name:string){
+        try{
+            const category = await this.categoryRepository.findOne(
+                {
+                    where:{
+                        name: name
+                    }
+                }
+            )
+
+            const products = await this.productRepository.find(
+                {
+                    relations: ['description', 'location', 'detail', 'media', 'language', 'category'],
+                    where:{
+                        category: category,
+                        language:{
+                            language: 'tr'
+                        }
+                    }
+                }
+            )
+
+            return products
+        }catch(err){
+            return;
+        }
+    }
+
+    async product_with_cateogry_eng(name:string){
+        try{
+            const category = await this.categoryRepository.findOne(
+                {
+                    where:{
+                        name: name
+                    }
+                }
+            )
+
+            const products = await this.productRepository.find(
+                {
+                    relations: ['description', 'location', 'detail', 'media', 'language', 'category'],
+                    where:{
+                        category: category,
+                        language:{
+                            language: 'en'
+                        }
+                    }
+                }
+            )
+
+            return products
         }catch(err){
             return;
         }

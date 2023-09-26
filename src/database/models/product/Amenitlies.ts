@@ -9,7 +9,4 @@ export class Amenitlies {
     @Column({nullable: false})
     title: string
     
-    @ManyToOne(() => Product, product => product.amenitlies)
-    product: Product
-    
 }

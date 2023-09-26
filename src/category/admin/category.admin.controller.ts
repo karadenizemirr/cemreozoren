@@ -28,4 +28,10 @@ export class CategoryAdminControler {
         await this.categoryService.delete_category(id)
         response.redirect(302, '/admin/category')
     }
+
+    @Post('/update/:id')
+    async get_update_category(@Param('id') id:number, @Res() response:Response, @Body() data:any){
+        await this.categoryService.update_category(id, data)
+        response.redirect(302, '/admin/category')
+    }
 }

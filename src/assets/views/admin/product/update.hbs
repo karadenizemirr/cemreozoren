@@ -4,9 +4,9 @@
             <main id="content" class="bg-gray-01">
                 <div class="px-3 px-lg-6 px-xxl-13 py-5 py-lg-10 my-profile">
                     <div class="mb-6">
-                        <h2 class="mb-0 text-heading fs-22 lh-15">Ürün Ekle
+                        <h2 class="mb-0 text-heading fs-22 lh-15">Emlak Güncelle
                         </h2>
-                        <p class="mb-1">Ürünlerinizi Ekleyebilirsiniz</p>
+                        <p class="mb-1">Emlaklarınızı Buradan Güncelleyebilirsiniz</p>
                     </div>
                     <div class="collapse-tabs new-property-step">
                         <ul class="nav nav-pills border py-2 px-3 mb-6 d-none d-md-flex mb-6" role="tablist">
@@ -41,7 +41,7 @@
                             </li>
                         </ul>
                         <div class="tab-content shadow-none p-0">
-                            <form accept="/admin/product/add" method="post" enctype="multipart/form-data"
+                            <form accept="/admin/product/update/{{thid.id}}" method="post"
                                 id="product_form">
                                 <div id="collapse-tabs-accordion">
                                     <div class="tab-pane tab-pane-parent fade show active px-0" id="description"
@@ -80,14 +80,14 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-lg border-0"
                                                                             id="title" name="description_title"
-                                                                            autocomplete="off">
+                                                                            autocomplete="off" value="{{product.description.title}}">
                                                                     </div>
                                                                     <div class="form-group mb-0">
                                                                         <label for="description-01"
                                                                             class="text-heading">Açıklama</label>
                                                                         <textarea class="form-control border-0" rows="5"
                                                                             name="description"
-                                                                            id="description-01"></textarea>
+                                                                            id="description-01">{{product.description.description}}</textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -111,8 +111,7 @@
                                                                                     data-style="btn-lg py-2 h-52"
                                                                                     id="category" name="category_id">
                                                                                     {{#each categories}}
-                                                                                    <option value="{{this.id}}">
-                                                                                        {{this.name}}</option>
+                                                                                    <option value="{{this.id}}" {{isSelected this.name product.category.name}} >{{this.name}}</option>
                                                                                     {{/each}}
                                                                                 </select>
                                                                             </div>
@@ -139,7 +138,7 @@
                                                                                 <input type="text"
                                                                                     class="form-control form-control-lg border-0"
                                                                                     id="price" name="price_in"
-                                                                                    autocomplete="off">
+                                                                                    autocomplete="off" value="{{product.description.price_in}}">
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-lg-12 col-xxl-6 px-2">
@@ -151,7 +150,7 @@
                                                                                     name="yearly_tax_rate"
                                                                                     class="form-control form-control-lg border-0"
                                                                                     id="yearly_tax_rate"
-                                                                                    autocomplete="off">
+                                                                                    autocomplete="off" value="{{product.description.yearly_tax_rate}}" >
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -166,7 +165,7 @@
                                                                                     class="form-control form-control-lg border-0"
                                                                                     id="association_fee"
                                                                                     name="association_fee"
-                                                                                    autocomplete="off">
+                                                                                    autocomplete="off" value="{{product.description.association_fee}}">
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-lg-12 col-xxl-6 px-2">
@@ -181,7 +180,7 @@
                                                                                     class="form-control form-control-lg border-0"
                                                                                     id="after_price_label"
                                                                                     name="after_price_label"
-                                                                                    autocomplete="off">
+                                                                                    autocomplete="off" value="{{product.description.after_price_label}}">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -197,7 +196,7 @@
                                                                                     class="form-control form-control-lg border-0"
                                                                                     id="before_price_label"
                                                                                     name="before_price_label"
-                                                                                    autocomplete="off">
+                                                                                    autocomplete="off" value="{{product.description.before_price_label}}">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -217,8 +216,8 @@
                                                                             title="Emlak Durumu"
                                                                             data-style="btn-lg py-2 h-52"
                                                                             id="property_status" name="property_status">
-                                                                            <option value="rent">Kiralık</option>
-                                                                            <option value="sale">Satılık</option>
+                                                                            <option value="rent" {{isSelected product.description.property_status 'rent'}}>Kiralık</option>
+                                                                            <option value="sale" {{isSelected product.description.property_status 'sale'}} >Satılık</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -378,7 +377,7 @@
                                                                             class="text-heading">Adres</label>
                                                                         <input type="text"
                                                                             class="form-control form-control-lg border-0"
-                                                                            id="address" name="address">
+                                                                            id="address" name="address" value="{{product.location.address}}">
                                                                     </div>
                                                                     <div class="form-row mx-n2">
                                                                         <div class="col-md-6 col-lg-12 col-xxl-6 px-2">
@@ -387,7 +386,7 @@
                                                                                     class="text-heading">Eyalete</label>
                                                                                 <input type="text"
                                                                                     class="form-control form-control-lg border-0"
-                                                                                    id="state" name="state">
+                                                                                    id="state" name="state" value="{{product.location.state}}">
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-lg-12 col-xxl-6 px-2">
@@ -396,7 +395,7 @@
                                                                                     class="text-heading">Şehir</label>
                                                                                 <input type="text"
                                                                                     class="form-control form-control-lg border-0"
-                                                                                    id="city" name="city">
+                                                                                    id="city" name="city" value="{{product.location.city}}">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -408,7 +407,7 @@
                                                                                 <input type="text"
                                                                                     class="form-control form-control-lg border-0"
                                                                                     id="neighborhood"
-                                                                                    name="neighborhood">
+                                                                                    name="neighborhood" value="{{product.location.neighborhood}}">
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-lg-12 col-xxl-6 px-2">
@@ -417,7 +416,7 @@
                                                                                     class="text-heading">Zip</label>
                                                                                 <input type="text"
                                                                                     class="form-control form-control-lg border-0"
-                                                                                    id="zip" name="zip">
+                                                                                    id="zip" name="zip" value="{{product.location.zip}}">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -426,7 +425,7 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-lg border-0"
-                                                                            id="country" name="country">
+                                                                            id="country" name="country" value="{{product.location.country}}">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -452,7 +451,7 @@
                                                                                 </label>
                                                                                 <input type="text"
                                                                                     class="form-control form-control-lg border-0"
-                                                                                    id="latitude" name="latitude">
+                                                                                    id="latitude" name="latitude" value="{{product.location.latitude}}">
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-lg-12 col-xxl-6 px-2">
@@ -461,7 +460,7 @@
                                                                                     class="text-heading">Boylam</label>
                                                                                 <input type="text"
                                                                                     class="form-control form-control-lg border-0"
-                                                                                    id="longitude" name="longitude">
+                                                                                    id="longitude" name="longitude" value="{{product.location.longitude}}">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -516,7 +515,7 @@
                                                                                 class="text-muted">(zorunlu)</span></label>
                                                                         <input type="text"
                                                                             class="form-control form-control-lg border-0"
-                                                                            id="size_in_ft" name="size_in_ft">
+                                                                            id="size_in_ft" name="size_in_ft" value="{{product.detail.size_in_ft}}">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-4">
@@ -526,7 +525,7 @@
                                                                                 class="text-muted">(zorunlu)</span></label>
                                                                         <input type="text"
                                                                             class="form-control form-control-lg border-0"
-                                                                            id="lot_size_in_ft" name="lot_size_in_ft">
+                                                                            id="lot_size_in_ft" name="lot_size_in_ft" value="{{product.detail.lot_size_in_ft}}">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-4">
@@ -535,7 +534,7 @@
                                                                             Sayısı</label>
                                                                         <input type="text"
                                                                             class="form-control form-control-lg border-0"
-                                                                            id="rooms" name="rooms">
+                                                                            id="rooms" name="rooms" value="{{product.detail.rooms}}">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -546,7 +545,7 @@
                                                                             Odası</label>
                                                                         <input type="text"
                                                                             class="form-control form-control-lg border-0"
-                                                                            id="bedrooms" name="bedrooms">
+                                                                            id="bedrooms" name="bedrooms" value="{{product.detail.bedrooms}}">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-4">
@@ -555,7 +554,7 @@
                                                                             class="text-heading">Banyo</label>
                                                                         <input type="text"
                                                                             class="form-control form-control-lg border-0"
-                                                                            id="bathrooms" name="bathrooms">
+                                                                            id="bathrooms" name="bathrooms" value="{{product.detail.bathrooms}}">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-4">
@@ -566,7 +565,7 @@
                                                                                 değer girin)</span></label>
                                                                         <input type="text"
                                                                             class="form-control form-control-lg border-0"
-                                                                            id="customID" name="customID">
+                                                                            id="customID" name="customID" value="{{product.detail.custom_id}}">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -577,7 +576,7 @@
                                                                             Sayısı</label>
                                                                         <input type="text"
                                                                             class="form-control form-control-lg border-0"
-                                                                            id="garages" name="garages">
+                                                                            id="garages" name="garages" value="{{product.detail.garages}}">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-4">
@@ -586,7 +585,7 @@
                                                                             class="text-heading">Garaj Büyüklüğü</label>
                                                                         <input type="text"
                                                                             class="form-control form-control-lg border-0"
-                                                                            id="garage-size" name="garage-size">
+                                                                            id="garage-size" name="garage-size" value="{{product.detail.garage_size}}">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-4">
@@ -596,7 +595,7 @@
                                                                                 class="text-muted"></span></label>
                                                                         <input type="text"
                                                                             class="form-control form-control-lg border-0"
-                                                                            id="year-built" name="year-built">
+                                                                            id="year-built" name="year-built" value="{{product.detail.year_built}}">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -610,7 +609,7 @@
                                                                                 class="text-muted">(tarih)</span></label>
                                                                         <input type="date"
                                                                             class="form-control form-control-lg border-0"
-                                                                            id="available-from" name="available-from">
+                                                                            id="available-from" name="available-from" value="{{product.detail.available_from}}">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-4">
@@ -619,7 +618,7 @@
                                                                             class="text-heading">Bodrum</label>
                                                                         <input type="text"
                                                                             class="form-control form-control-lg border-0"
-                                                                            id="basement" name="basement">
+                                                                            id="basement" name="basement" value="{{product.detail.basement}}">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-4">
@@ -628,7 +627,7 @@
                                                                             class="text-heading">Ayrıca Detaylar</label>
                                                                         <input type="text"
                                                                             class="form-control form-control-lg border-0"
-                                                                            id="extra-details" name="extra-details">
+                                                                            id="extra-details" name="extra-details" value="{{product.detail.extra_details}}">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -639,7 +638,7 @@
                                                                             Kaplama</label>
                                                                         <input type="text"
                                                                             class="form-control form-control-lg border-0"
-                                                                            id="roofing" name="roofing">
+                                                                            id="roofing" name="roofing" value="{{product.detail.roofing}}">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-4">
@@ -649,7 +648,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-lg border-0"
                                                                             id="exterior-material"
-                                                                            name="exterior-material">
+                                                                            name="exterior-material" value="{{product.detail.exterior_material}}">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-4">
@@ -661,10 +660,10 @@
                                                                             title="Bina Yapısı"
                                                                             data-style="btn-lg py-2 h-52"
                                                                             id="structure-type" name="structure-type">
-                                                                            <option value="tas">Taş</option>
-                                                                            <option value="prefabrik">Prefabrik</option>
-                                                                            <option value="ahsap">Ahşap</option>
-                                                                            <option value="diger">Diğer</option>
+                                                                            <option value="tas" {{isSelected product.detail.structure_type 'tas'}} >Taş</option>
+                                                                            <option value="prefabrik" {{isSelected product.detail.structure_type 'tas'}}>Prefabrik</option>
+                                                                            <option value="ahsap" {{isSelected product.detail.structure_type 'tas'}}>Ahşap</option>
+                                                                            <option value="diger" {{isSelected product.detail.structure_type 'tas'}}>Diğer</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -676,7 +675,7 @@
                                                                             class="text-heading">Not</label>
                                                                         <textarea class="form-control border-0"
                                                                             id="agent_nots"
-                                                                            name="agent_nots"></textarea>
+                                                                            name="agent_nots">{{product.detail.agent_nots}}</textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -695,7 +694,7 @@
                                                                             class="text-heading">Isınma Türü</label>
                                                                         <input type="text"
                                                                             class="form-control form-control-lg border-0"
-                                                                            id="energy-class" name="energy-class">
+                                                                            id="energy-class" name="energy-class" value="{{product.detail.energy_class}}">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -751,8 +750,8 @@
                                                                             title="Dil Seçiniz*"
                                                                             data-style="btn-lg py-2 h-52" id="language"
                                                                             name="language">
-                                                                            <option value="tr">Türkçe</option>
-                                                                            <option value="en">İngilizce</option>
+                                                                            <option value="tr" {{isSelected product.language.language 'tr'}}>Türkçe</option>
+                                                                            <option value="en" {{isSelected product.language.language 'en'}}>İngilizce</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>

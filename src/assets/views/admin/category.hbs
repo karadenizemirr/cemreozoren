@@ -20,21 +20,36 @@
                                     <th scope="col">ID</th>
                                     <th scope="col">Kategori Adı</th>
                                     <th scope="col">Kategori Dili</th>
-                                    <th scope="col">İşlem</th>
+                                    <th scope="col" class="text-center">İşlem</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {{#each categories}}
-                                <tr>
-                                    <th scope="row">{{this.id}}</th>
-                                    <td>{{this.name}}</td>
-                                    <td>{{this.language.language}}</td>
-                                    <td>
-                                        <a class="btn btn-danger btn-sm text-white" href="/admin/category/delete/{{this.id}}">
-                                            <i class="fas fa-trash mr-2"></i>Sil
-                                        </a>
-                                    </td>
-                                </tr>
+                                <form action="/admin/category/update/{{this.id}}" method="post">
+                                    <tr>
+                                        <th scope="row">{{this.id}}</th>
+                                        <td>
+                                            <input type="text" class="form-control" value="{{this.name}}" name="name" autocomplete="off">
+                                        </td>
+                                        <td>
+                                            <select id="" class="form-control">
+                                                <option value="tr" {{isSelected this.language.language 'tr' }}>Türkçe
+                                                </option>
+                                                <option value="en" {{isSelected this.language.language 'en' }}>English
+                                                </option>
+                                            </select>
+                                        </td>
+                                        <td class="text-center">
+                                            <button class="btn btn-success btn-sm" type="submit">
+                                                <i class="fas fa-sync-alt mr-2"></i>
+                                            </button>
+                                            <a class="btn btn-danger btn-sm text-white"
+                                                href="/admin/category/delete/{{this.id}}">
+                                                <i class="fas fa-trash mr-2"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </form>
                                 {{/each}}
                             </tbody>
                         </table>
@@ -50,14 +65,15 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Kategori Ekle</h1>
+                <h4 class="modal-title fs-5" id="exampleModalLabel">Kategori Ekle</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="/admin/category" method="post">
                     <div class="row">
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Kategori Adı" name="name">
+                            <input type="text" class="form-control" placeholder="Kategori Adı" name="name"
+                                autocomplete="off">
                         </div>
                         <div class="col">
                             <select name="language" id="" class="form-control">

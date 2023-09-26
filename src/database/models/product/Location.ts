@@ -19,6 +19,9 @@ export class Location {
     neighborhood: string
 
     @Column({nullable: true})
+    country: string
+
+    @Column({nullable: true})
     zip: string
 
     @Column({nullable: true})

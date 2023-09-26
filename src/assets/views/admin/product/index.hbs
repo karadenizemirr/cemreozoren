@@ -3,7 +3,7 @@
         <div class="px-3 px-lg-6 px-xxl-13 py-5 py-lg-10">
             <div class="row">
                 {{#each products}}
-                <div class="col-md-6 col-xxl-3 mb-6">
+                <div class="col-md-6 col-xxl-6 mb-6">
                     <div class="card shadow-hover-1">
                         <div class="hover-change-image bg-hover-overlay rounded-lg card-img-top">
                             <img src="/public/uploads/{{#with media}}{{this.[0].image_path}}{{/with}}"
@@ -11,12 +11,16 @@
 
                             <div class="card-img-overlay p-2 d-flex flex-column">
                                 <div>
-                                    <span class="badge badge-primary">for sale</span>
+                                    {{#eq this.description.property_status 'sale'}}
+                                    <span class="badge badge-primary">Satılık</span>
+                                    {{else}}
+                                    <span class="badge badge-success">Kiralık</span>
+                                    {{/eq}}
                                 </div>
                             </div>
                         </div>
                         <div class="card-body pt-3">
-                            <h2 class="card-title fs-16 lh-2 mb-0"><a href="single-property-1.html"
+                            <h2 class="card-title fs-16 lh-2 mb-0"><a href="/admin/product/update/{{this.id}}"
                                     class="text-dark hover-primary">{{this.title}}</a>
                             </h2>
                             <p class="card-text font-weight-500 text-gray-light mb-2">{{this.location.address}}</p>
@@ -27,6 +31,9 @@
                                     class="text-heading lh-15 font-weight-bold fs-17">{{this.description.before_price_label}}&nbsp;{{this.description.price_in}}&nbsp;{{this.after_price_label}}</span>
                             </div>
                             <div class="ml-auto">
+                                <a class="btn btn-success btn-sm text-white" href="/admin/product/update/{{this.id}}">
+                                    <i class="fas fa-sync"></i>
+                                </a>
                                 <a class="btn btn-danger btn-sm text-white" href="/admin/product/delete/{{this.id}}">
                                     <i class="fas fa-trash"></i>
                                 </a>

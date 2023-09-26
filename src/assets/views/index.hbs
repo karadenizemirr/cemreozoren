@@ -1,21 +1,23 @@
 <section class="d-flex flex-column">
     <div class="bg-cover text-center d-flex align-items-center justify-content-center flex-column custom-vh-03"
         style="background-image: url('/public/images/bg-home-03.jpg')">
-        <p class="fs-md-45 fs-30 text-white font-weight-light mb-0 lh-15 pt-8" data-animate="zoomIn">{{__.BANNER.TOP}}</p>
+        <p class="fs-md-45 fs-30 text-white font-weight-light mb-0 lh-15 pt-8" data-animate="zoomIn">{{__.BANNER.TOP}}
+        </p>
         <h2 class="text-white display-1 lh-1 mb-0" data-animate="zoomIn">{{__.BANNER.TITLE}}</h2>
         <img src="/public/images/signature.png" class="pl-md-17 ml-md-17 mr-md-n8" alt="Dream home"
             data-animate="zoomIn">
         <p class="font-weight-500 text-white fs-15 mb-6 mt-3 pb-1" data-animate="zoomIn">
-           {{__.BANNER.DESCRIPTION}} 
+            {{__.BANNER.DESCRIPTION}}
         </p>
-        <a href="#" class="btn btn-lg btn-primary font-weight-600 rounded-lg mb-8" data-animate="zoomIn">{{__.BUTTON.ALL}}<i
-                class="far fa-long-arrow-right ml-2"></i></a>
+        <a href="#" class="btn btn-lg btn-primary font-weight-600 rounded-lg mb-8"
+            data-animate="zoomIn">{{__.BUTTON.ALL}}<i class="far fa-long-arrow-right ml-2"></i></a>
     </div>
 </section>
 
 <section class="py-11">
     <div class="container">
-        <p class="text-primary font-weight-500 letter-spacing-263 text-center text-uppercase mb-5">{{__.HOME.PROPERTY}}</p>
+        <p class="text-primary font-weight-500 letter-spacing-263 text-center text-uppercase mb-5">{{__.HOME.PROPERTY}}
+        </p>
         </p>
         <h2 class="text-dark text-center mb-8">{{__.HOME.DESCRIPTION}}</h2>
         <div class="row">
@@ -23,10 +25,17 @@
             <div class="col-lg-4 col-sm-6 mb-6" data-animate="zoomIn">
                 <div class="card shadow-hover-1">
                     <div class="hover-change-image bg-hover-overlay rounded-lg card-img-top">
-                        <img src="/public/uploads/{{#with media}}{{this.[0].image_path}}{{/with}}" alt="Home in Metric Way">
+                        <img src="/public/uploads/{{#with media}}{{this.[0].image_path}}{{/with}}"
+                            alt="Home in Metric Way">
                         <div class="card-img-overlay p-2 d-flex flex-column">
                             <div>
-                                <span class="badge mr-2 badge-primary">For Sale</span>
+                                <div>
+                                    {{#eq this.description.property_status 'sale'}}
+                                    <span class="badge badge-primary">Satılık</span>
+                                    {{else}}
+                                    <span class="badge badge-success">Kiralık</span>
+                                    {{/eq}}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -58,7 +67,9 @@
                         </ul>
                     </div>
                     <div class="card-footer bg-transparent d-flex justify-content-between align-items-center py-3">
-                        <p class="fs-17 font-weight-bold text-heading mb-0">{{this.description.before_price_label}}&nbsp;{{this.description.price_in}}&nbsp;{{this.after_price_label}}</p>
+                        <p class="fs-17 font-weight-bold text-heading mb-0">
+                            {{this.description.before_price_label}}&nbsp;{{this.description.price_in}}&nbsp;{{this.after_price_label}}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -81,11 +92,11 @@
             data-slick-options='{"slidesToShow": 5, "autoplay":true,"dots":false,"responsive":[{"breakpoint": 1200,"settings": {"slidesToShow":4,"arrows":false}},{"breakpoint": 992,"settings": {"slidesToShow":3,"arrows":false}},{"breakpoint": 768,"settings": {"slidesToShow": 2,"arrows":false,"dots":false,"autoplay":true}},{"breakpoint": 576,"settings": {"slidesToShow": 1,"arrows":false,"dots":false,"autoplay":true}}]}'>
             {{#each categories}}
             <div class="box px-0 py-6" data-animate="fadeInUp">
-                <a href="listing-with-left-sidebar.html"
+                <a href="/product/category/{{this.name}}"
                     class="card border-0 align-items-center justify-content-center pt-7 pb-5 px-3 shadow-hover-3 bg-transparent bg-hover-white text-decoration-none">
                     <img src="/public/images/verified.png" class="card-img-top" alt="Apartment">
                     <div class="card-body px-0 pt-5 pb-0">
-                        <h4 class="card-title fs-16 lh-2 text-dark mb-0">{{this.title}}</h4>
+                        <h4 class="card-title fs-16 lh-2 text-dark mb-0">{{this.name}}</h4>
                     </div>
                 </a>
             </div>

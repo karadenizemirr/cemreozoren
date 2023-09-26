@@ -79,4 +79,13 @@ export class CategoryService {
             return;
         }
     }
+
+    async update_category(id:number, data:any): Promise<void>{
+        try{
+            await this.categoryRepository.update(id, data)
+        }catch(err){
+            console.log(err)
+            return;
+        }
+    }
 }
