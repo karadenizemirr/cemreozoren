@@ -1,8 +1,10 @@
-import { Body, Controller, Get, Param, Post, Render, Res } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, Render, Res, UseGuards } from "@nestjs/common";
 import { Response } from "express";
 import { CategoryService } from "../category.service";
+import { AuthGuard } from "src/auth/auth.guard";
 
 @Controller('category')
+@UseGuards(AuthGuard)
 export class CategoryAdminControler {
     constructor(private categoryService: CategoryService) {}
 

@@ -6,6 +6,7 @@ import fastyfyMultipart from '@fastify/multipart';
 import secureSession from '@fastify/secure-session';
 import * as cookieParser from 'cookie-parser';
 import Handlebars from 'handlebars';
+import { ErrorInterceptor } from './customService/error.service';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -58,6 +59,7 @@ async function bootstrap() {
     }
   });
   app.use(cookieParser());
+  app.useGlobalFilters(new ErrorInterceptor());
   await app.listen(process.env.PORT ?? 3000, process.env.HOST || '0.0.0.0');
 }
 bootstrap();

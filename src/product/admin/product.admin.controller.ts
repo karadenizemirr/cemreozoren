@@ -1,10 +1,12 @@
-import { Body, Controller, Get, Param, Post, Render, Res, UseInterceptors } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, Render, Res, UseGuards, UseInterceptors } from "@nestjs/common";
 import { ProductService } from "../product.service";
 import { CategoryService } from "src/category/category.service";
 import { FilesInterceptor, MemoryStorageFile, UploadedFiles } from "@blazity/nest-file-fastify";
 import e, { Response } from "express";
+import { AuthGuard } from "src/auth/auth.guard";
 
 @Controller('product')
+@UseGuards(AuthGuard)
 export class ProductAdminController {
     constructor(private productService: ProductService, private categoryService: CategoryService) { }
 
@@ -60,5 +62,15 @@ export class ProductAdminController {
     async post_edit_product(@Param('id') id:number, @Body() body:any, @Res() response: Response){
         await this.productService.get_product_update(id, body)
         response.redirect(302, '/admin/product')
+    }
+
+    @Post('search')
+    @Render('admin/product/index')
+    async post_search(@Body() data:any){
+        const result = await this.productService.search_product_global(data.query)
+        return {
+            title: 'Arama Sonuçları',
+            products: result
+        }
     }
 }

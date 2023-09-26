@@ -94,14 +94,14 @@
               </div>
             </div>
             <div class="collapse navbar-collapse bg-white" id="primaryMenuSidebar">
-              <form class="d-block d-xl-none pt-5 px-3">
+              <form class="d-block d-xl-none pt-5 px-3" action="/admin/product/search" method="post">
                 <div class="input-group">
                   <div class="input-group-prepend mr-0 bg-input">
                     <button class="btn border-0 shadow-none fs-20 text-muted pr-0" type="submit"><i
                         class="far fa-search"></i></button>
                   </div>
                   <input type="text" class="form-control border-0 form-control-lg shadow-none"
-                    placeholder="Search for..." name="search">
+                    placeholder="Ara" name="query">
                 </div>
               </form>
               <ul class="list-group list-group-flush w-100">
@@ -197,14 +197,14 @@
           <div class="container-fluid">
             <nav class="navbar navbar-light py-0 row no-gutters px-3 px-lg-0">
               <div class="col-md-4 px-0 px-md-6 order-1 order-md-0">
-                <form>
+                <form action="/admin/product/search" method="post" >
                   <div class="input-group">
                     <div class="input-group-prepend mr-0">
                       <button class="btn border-0 shadow-none fs-20 text-muted p-0" type="submit"><i
                           class="far fa-search"></i></button>
                     </div>
                     <input type="text" class="form-control border-0 bg-transparent shadow-none"
-                      placeholder="Search for..." name="search" autocomplete="off">
+                      placeholder="Ara" name="query" autocomplete="off">
                   </div>
                 </form>
               </div>

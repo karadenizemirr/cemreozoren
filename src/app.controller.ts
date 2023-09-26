@@ -24,7 +24,7 @@ export class AppController {
     let products:any;
     const locations = await this.locationService.get_all_location()
 
-    if (req.cookies.lang == 'tr' || req.cookies.lang == undefined){
+    if (req.cookies.lang == 'tr' || req.cookies.lang == undefined || !req.cookies.lang){
       categories = await this.categoryService.get_all_category_tr()
       products = await this.productService.get_all_product_tr()
 
@@ -32,6 +32,7 @@ export class AppController {
       categories = await this.categoryService.get_all_category_eng()
       products = await this.productService.get_all_product_eng()
     }
+    
     return {
       title: 'Anasayfa',
       categories: categories,

@@ -10,7 +10,7 @@ import { Detail } from "src/database/models/product/Detail";
 import { Location } from "src/database/models/product/Location";
 import { Media } from "src/database/models/product/Media";
 import { Product } from "src/database/models/product/Product";
-import { Like, Repository } from "typeorm";
+import { ILike, Like, Repository } from "typeorm";
 
 @Injectable()
 export class ProductService {
@@ -167,11 +167,40 @@ export class ProductService {
         }
     }
 
+    async search_product_global(search_query:string){
+        try{
+            const products = await this.productRepository.find(
+                {
+                    relations: ['description', 'location', 'detail', 'media', 'language', 'category'],
+                    where: [
+                        {
+                            location: {
+                                address: ILike(`%${search_query}%`)
+                            }
+                        },
+                        {
+                            title: ILike(`%${search_query}%`)
+                        },
+                        {
+                            description: {
+                                property_status: ILike(`%${search_query}%`)
+                            }
+                        }
+                    ]
+                }
+            )
+
+            return products
+        }catch(err){
+            return;
+        }
+    }
+
     async search_product_tr(search_query:string){
         try{
             const products = await this.productRepository.find(
                 {
-                    relations: ['description', 'location', 'detail', 'media', 'language'],
+                    relations: ['description', 'location', 'detail', 'media', 'language', 'category'],
                     where:[
                         {
                             language: {
@@ -180,15 +209,15 @@ export class ProductService {
                         },
                         {
                             location: {
-                                address: Like(`%${search_query}%`)
+                                address: ILike(`%${search_query}%`)
                             }
                         },
                         {
-                            title: Like(`%${search_query}%`)
+                            title: ILike(`%${search_query}%`)
                         },
                         {
                             description: {
-                                property_status: Like(`%${search_query}%`)
+                                property_status: ILike(`%${search_query}%`)
                             }
                         }
                     ]
@@ -203,15 +232,31 @@ export class ProductService {
 
     async search_product_eng(search_query:string){
         try{
-            const products = await this.productRepository.createQueryBuilder('product')
-            .leftJoinAndSelect('product.description', 'description')
-            .leftJoinAndSelect('product.location', 'location')
-            .leftJoinAndSelect('product.detail', 'detail')
-            .where('language.language = :lang', {lang: 'en'})
-            .andWhere('description.title LIKE :search', {search: `%${search_query}%`})
-            .getMany()
-
-            return products
+            const products = await this.productRepository.find(
+                {
+                    relations: ['description', 'location', 'detail', 'media', 'language', 'category'],
+                    where:[
+                        {
+                            language: {
+                                language: 'en'
+                            },
+                        },
+                        {
+                            location: {
+                                address: ILike(`%${search_query}%`)
+                            }
+                        },
+                        {
+                            title: ILike(`%${search_query}%`)
+                        },
+                        {
+                            description: {
+                                property_status: ILike(`%${search_query}%`)
+                            }
+                        }
+                    ]
+                }
+            )
         }catch(err){
             return;
         }
