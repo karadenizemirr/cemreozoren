@@ -7,7 +7,8 @@
     "MENU": {
         "HOME": "Home",
         "CATEGORY": "Categories",
-        "SELECT_LANGUAGE": "Select Language"
+        "SELECT_LANGUAGE": "Select Language",
+        "LOGIN": "Sign In"
     },
     "SEARCH_BAR": {
         "HOME_TYPE": "Type",

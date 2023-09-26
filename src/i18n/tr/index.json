@@ -7,7 +7,8 @@
     "MENU": {
         "HOME": "Anasayfa",
         "CATEGORY": "Kategoriler",
-        "SELECT_LANGUAGE": "Dil Seçiniz"
+        "SELECT_LANGUAGE": "Dil Seçiniz",
+        "LOGIN": "Giriş Yap"
     },
     "SEARCH_BAR": {
         "HOME_TYPE": "Emlak Tipi",
