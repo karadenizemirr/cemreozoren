@@ -1,4 +1,4 @@
-import { Controller, Get, Render, Req, Res, Session } from '@nestjs/common';
+import { Controller, Get, Render, Req, Res, Session, UseGuards } from '@nestjs/common';
 import { AppService } from './app.service';
 import * as secureSession from '@fastify/secure-session';
 import { CategoryService } from './category/category.service';
@@ -6,6 +6,7 @@ import { Request, Response } from 'express';
 import { LocationService } from './location/location.service';
 import { ProductService } from './product/product.service';
 import { VisitorService } from './customService/visitor.service';
+import { AuthGuard } from './auth/auth.guard';
 
 @Controller()
 export class AppController {
@@ -55,6 +56,7 @@ export class AppController {
 
   @Get('dashboard')
   @Render('admin/index')
+  @UseGuards(AuthGuard)
   async get_dashboard(){
     const products = await this.productService.get_all_product()
     const length = products.length

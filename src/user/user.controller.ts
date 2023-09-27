@@ -3,7 +3,6 @@ import { IUser } from "src/database/interface/IUser";
 import { UserService } from "./user.service";
 import { Response, response } from "express";
 import * as secureSession from '@fastify/secure-session'
-import { AuthGuard } from "src/auth/auth.guard";
 
 @Controller('user')
 export class UserController {
@@ -17,7 +16,6 @@ export class UserController {
     }
     
     @Post('register')
-    @UseGuards(AuthGuard)
     async post_register(@Body() body:IUser, @Res() response:Response){
         const user = await this.userService.register(body)
 
