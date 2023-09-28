@@ -452,7 +452,7 @@
                                                                                 <input type="text"
                                                                                     class="form-control form-control-lg border-0"
                                                                                     id="latitude" name="latitude"
-                                                                                    autocomplete="off">
+                                                                                    autocomplete="off" hidden>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-lg-12 col-xxl-6 px-2">
@@ -462,7 +462,7 @@
                                                                                 <input type="text"
                                                                                     class="form-control form-control-lg border-0"
                                                                                     id="longitude" name="longitude"
-                                                                                    autocomplete="off">
+                                                                                    autocomplete="off" hidden>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -786,23 +786,29 @@
 </div>
 <script>
     $(document).ready(function () {
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v11',
-            center: [-73.981566, 40.739011],
-            zoom: 12
-        });
+        var address = "New York, NY"; // Tespit etmek istediğiniz adres
+        var accessToken = "pk.eyJ1Ijoia2FyYWRlbml6ZW1pcnIiLCJhIjoiY2xuMzV1b2JiMGZvaDJtcGhreW84M3g1eCJ9.5FVjNkAnoYGLQdCKELBilA"; // Mapbox hesabınızdan elde ettiğiniz erişim belirteci
 
-        $('#latitude, #longitude').on('change', function () {
-            var lat = $('#latitude').val();
-            var lon = $('#longitude').val();
+        var geocodingUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${accessToken}`;
 
-            map.setCenter([lon, lat]);
-            map.setZoom(12);
-
-            var marker = new mapboxgl.Marker()
-                .setLngLat([lon, lat])
-                .addTo(map);
+        $.ajax({
+            url: geocodingUrl,
+            method: "GET",
+            dataType: "json",
+            success: function (data) {
+                if (data.features.length > 0) {
+                    var coordinates = data.features[0].center;
+                    var latitude = coordinates[1];
+                    var longitude = coordinates[0];
+                    $('#latitude').val(latitude);
+                    $('#longitude').val(longitude);
+                } else {
+                    console.log("No results found for the address.");
+                }
+            },
+            error: function (error) {
+                console.log("Geocoding failed:", error);
+            }
         });
     });
 </script>

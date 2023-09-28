@@ -34,8 +34,6 @@ export class ProductController {
         }else{
             result = await this.productService.get_product_detail_eng(id)
         }
-
-        console.log(result)
         return {
             title: 'Product Detail',
             result: result
