@@ -30,7 +30,7 @@ export class Description {
     @Column({nullable: true})
     property_status: string
 
-    @OneToOne(() => Product, product => product.description)
+    @OneToOne(() => Product, product => product.description,  {onDelete: 'CASCADE', onUpdate: 'CASCADE'})
     @JoinColumn()
     product: Product
     

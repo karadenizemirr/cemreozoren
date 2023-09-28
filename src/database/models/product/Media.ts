@@ -15,6 +15,6 @@ export class Media {
     @Column({nullable: true})
     virtual_tour: string
 
-    @ManyToOne(() => Product, product => product.media)
+    @ManyToOne(() => Product, product => product.media, {onDelete: 'CASCADE', onUpdate: 'CASCADE'})
     product: Product
 }

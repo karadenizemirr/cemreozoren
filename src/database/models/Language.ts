@@ -10,11 +10,11 @@ export class Language {
     @Column()
     language: string
 
-    @OneToOne(() => Category, category => category.language)
+    @OneToOne(() => Category, category => category.language , {onDelete: 'CASCADE', onUpdate: 'CASCADE'})
     @JoinColumn()
     category: Category
 
-    @OneToOne(() => Product, product => product.language, {onDelete: 'CASCADE'})
+    @OneToOne(() => Product, product => product.language, {onDelete: 'CASCADE', onUpdate: 'CASCADE'})
     @JoinColumn()
     product: Product
 }

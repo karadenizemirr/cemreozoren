@@ -327,6 +327,7 @@ export class ProductService {
                 }
             )
         }catch(err){
+            console.log(err)
             return;
         }
     }

@@ -63,7 +63,7 @@ export class Detail {
     @Column({nullable: true})
     index_in_kwh: string
 
-    @OneToOne(() => Product, product => product.detail)
+    @OneToOne(() => Product, product => product.detail, {onDelete: 'CASCADE', onUpdate: 'CASCADE'})
     @JoinColumn()
     product: Product
 }

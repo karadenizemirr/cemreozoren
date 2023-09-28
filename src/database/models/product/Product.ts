@@ -30,7 +30,7 @@ export class Product {
     @OneToOne(() => Description, description => description.product)
     description: Description
 
-    @ManyToOne(() => Category, category => category.product)
+    @ManyToOne(() => Category, category => category.product , {onDelete: 'CASCADE', onUpdate: 'CASCADE'})
     category: Category
 
 }

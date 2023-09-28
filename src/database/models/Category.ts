@@ -13,6 +13,6 @@ export class Category {
     @OneToOne(() => Language, language => language.category)
     language: Language
 
-    @OneToMany(() => Product, product => product.category)
+    @OneToMany(() => Product, product => product.category, {cascade: true})
     product: Product[]
 }

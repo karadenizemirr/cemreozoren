@@ -30,7 +30,7 @@ export class Location {
     @Column({nullable: true})
     longitude: string
 
-    @OneToOne(() => Product, product => product.location)
+    @OneToOne(() => Product, product => product.location,  {onDelete: 'CASCADE', onUpdate: 'CASCADE'})
     @JoinColumn()
     product: Product
     
