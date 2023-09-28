@@ -32,7 +32,7 @@ export class AppController {
     }else{
       categories = await this.categoryService.get_all_category_eng()
       products = await this.productService.get_all_product_eng()
-    }
+    } 
     
     return {
       title: 'Anasayfa',

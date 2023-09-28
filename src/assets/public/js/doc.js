@@ -25,7 +25,7 @@
 					.tooltip()
 					.on('mouseleave', function () {
 						// Explicitly hide tooltip, since after clicking it remains
-						// focused (as it's a button), so tooltip would otherwise
+						// focused (as it's a button), so tooltip would otherwiseAIzaSyB59zltsa4TAwc5x-2ciyehXBkZBHT5qao
 						// remain visible until focus is moved away
 						$(this).tooltip('hide');
 					});

@@ -440,7 +440,7 @@
                                                                     <div id="map"
                                                                         class="mapbox-gl map-point-animate mb-6"
                                                                         style="height: 296px"
-                                                                        data-mapbox-access-token="pk.eyJ1IjoiZHVvbmdsaCIsImEiOiJjanJnNHQ4czExMzhyNDVwdWo5bW13ZmtnIn0.f1bmXQsS6o4bzFFJc8RCcQ"
+                                                                        data-mapbox-access-token="pk.eyJ1Ijoia2FyYWRlbml6ZW1pcnIiLCJhIjoiY2xuMzV1b2JiMGZvaDJtcGhreW84M3g1eCJ9.5FVjNkAnoYGLQdCKELBilA"
                                                                         data-mapbox-options='{"center":[-73.981566, 40.739011],"setLngLat":[-73.981566, 40.739011]}'
                                                                         data-mapbox-marker='[{"position":[-73.981566, 40.739011],"className":"marker","backgroundImage":"images/googlle-market-01.png","backgroundRepeat":"no-repeat","width":"32px","height":"40px"}]'>
                                                                     </div>
@@ -448,11 +448,11 @@
                                                                         <div class="col-md-6 col-lg-12 col-xxl-6 px-2">
                                                                             <div class="form-group mb-md-0">
                                                                                 <label for="latitude"
-                                                                                    class="text-heading">Enlem
-                                                                                </label>
+                                                                                    class="text-heading">Enlem</label>
                                                                                 <input type="text"
                                                                                     class="form-control form-control-lg border-0"
-                                                                                    id="latitude" name="latitude">
+                                                                                    id="latitude" name="latitude"
+                                                                                    autocomplete="off">
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-lg-12 col-xxl-6 px-2">
@@ -461,7 +461,8 @@
                                                                                     class="text-heading">Boylam</label>
                                                                                 <input type="text"
                                                                                     class="form-control form-control-lg border-0"
-                                                                                    id="longitude" name="longitude">
+                                                                                    id="longitude" name="longitude"
+                                                                                    autocomplete="off">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -783,3 +784,25 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [-73.981566, 40.739011],
+            zoom: 12
+        });
+
+        $('#latitude, #longitude').on('change', function () {
+            var lat = $('#latitude').val();
+            var lon = $('#longitude').val();
+
+            map.setCenter([lon, lat]);
+            map.setZoom(12);
+
+            var marker = new mapboxgl.Marker()
+                .setLngLat([lon, lat])
+                .addTo(map);
+        });
+    });
+</script>
